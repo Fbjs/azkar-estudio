@@ -1,0 +1,47 @@
+site:
+  name: PPM Servicios
+  leyend: Mantenimiento y Reparación
+  site: 'https://ppmservicios.cl'
+  base: '/'
+  trailingSlash: false
+  googleSiteVerificationId: 'nAV4Y6iBI_zv2OgyOJ6x_60rfZ_165YNpE1EfwEQS2E'
+
+# Default SEO metadata
+metadata:
+  title:
+    default: PPM Servicios
+    template: '%s — Mantenimiento y Reparación'
+  description: "Especialistas en mantenimiento y reparación de maquinaria pesada, equipos de minería, flota liviana, buses y camiones. Ofrecemos soluciones integrales con estándares de fabricante para garantizar el óptimo rendimiento de tus equipos. Contáctanos y confía en nuestra experiencia."
+  robots:
+    index: true
+    follow: true
+  openGraph:
+    site_name: PPM Servicios
+    images:
+      - url: '~/assets/images/default.png'
+        width: 1200
+        height: 628
+    type: website
+  twitter:
+    handle: '@ppmservicios'
+    site: '@ppmservicios'
+    cardType: summary_large_image
+
+i18n:
+  language: es
+  textDirection: ltr
+
+analytics:
+  vendors:
+    googleAnalytics:
+      id: "G-VPVW6GJQRS" # or "G-XXXXXXXXXX"
+
+ui:
+  theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
+
+apps:
+  examples:
+    - name: Aplicación 1
+      description: Ejemplo de descripción de la aplicación 1.
+    - name: Aplicación 2
+      description: Ejemplo de descripción de la aplicación 2.

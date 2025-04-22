@@ -1,0 +1,137 @@
+---
+import Layout from '~/layouts/LandingLayoutProduct.astro';
+
+import Hero2 from '~/components/widgets/Hero2.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Features from '~/components/widgets/Features.astro';
+//import Stats from '~/components/widgets/Stats.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Button from '~/components/ui/Button.astro';
+import HeroImage from '~/assets/images/maquinaria-pesada.jpg';
+
+const metadata = {
+  title: 'Técnicas Especializadas - PPM Servicios',
+  ignoreTitleTemplate: true,
+};
+---
+<Layout metadata={metadata}>
+  <!-- Hero Section -->
+  <Hero2
+    tagline="Técnicas Especializadas"
+    title="Soluciones Técnicas para Maquinaria Pesada y Equipos Especializados"
+    subtitle="Ofrecemos servicios técnicos especializados para garantizar el rendimiento, la seguridad y la eficiencia de tus equipos."
+    image={{
+      src: HeroImage,
+      alt: 'Técnicas especializadas para maquinaria pesada',
+    }}
+  >
+    <Fragment slot="boton">
+      <Button variant="formulario">
+        Solicita una Cotización
+      </Button>
+      <Button
+        variant="whatsapp"
+        text="Más información"
+        phone="56963238857"
+      />
+    </Fragment>
+  </Hero2>
+
+  <!-- Stats Section 
+  <Stats
+    classes={{
+      container: 'stat-container bg-dark bg-opacity-70 my-10',
+    }}
+    title="Resultados de Nuestras Técnicas Especializadas"
+    subtitle="Garantizamos calidad y precisión en cada servicio técnico."
+    stats={[
+      { title: 'Equipos Reparados', amount: '500', symbol: '+' },
+      { title: 'Clientes Satisfechos', amount: '200', symbol: '+' },
+      { title: 'Años de Experiencia', amount: '15', symbol: '+' },
+      { title: 'Proyectos Completados', amount: '300', symbol: '+' },
+    ]}
+  /> -->
+
+  <!-- Features Section -->
+  <Features
+    title="Nuestras Técnicas Especializadas"
+    subtitle="Combinamos experiencia y tecnología para ofrecer soluciones técnicas de alta calidad."
+    columns={3}
+    items={[
+      {
+        title: 'Diagnóstico de Motores',
+        description: 'Especialistas en motores Detroit y Cummins para garantizar un rendimiento óptimo.',
+        icon: 'tabler:engine',
+      },
+      {
+        title: 'Transmisiones',
+        description: 'Reparación y mantenimiento de transmisiones Fuller y Allison.',
+        icon: 'tabler:settings',
+      },
+      {
+        title: 'Reparación y Calibración de Blowers',
+        description: 'Servicios especializados para garantizar la eficiencia de tus blowers.',
+        icon: 'tabler:wind',
+      },
+      {
+        title: 'Sistemas LMI',
+        description: 'Instalación y mantenimiento de sistemas de monitoreo de carga (LMI) para grúas.',
+        icon: 'tabler:device-desktop',
+      },
+      {
+        title: 'Kit Minero',
+        description: 'Soluciones personalizadas para la industria minera, adaptadas a tus necesidades.',
+        icon: 'tabler:box',
+      },
+      {
+        title: 'Cámaras de Retroceso',
+        description: 'Instalación de cámaras para mejorar la seguridad en operaciones.',
+        icon: 'tabler:camera',
+      },
+      {
+        title: 'Sistemas de Seguridad',
+        description: 'Jaulas virtuales, alarmas y semáforos para garantizar la seguridad en el trabajo.',
+        icon: 'tabler:shield-check',
+      },
+    ]}
+  />
+
+  <!-- Call to Action Section -->
+  <CallToAction
+    actions={[
+      {
+        variant: 'whatsapp',
+        phone: '56963238857',
+        text: 'Cotiza tu Proyecto',
+      },
+    ]}
+  >
+    <Fragment slot="title">Confía en Nuestras Técnicas Especializadas</Fragment>
+    <Fragment slot="subtitle">
+      Contáctanos para más información sobre nuestros servicios técnicos especializados.
+    </Fragment>
+  </CallToAction>
+
+  <!-- FAQs Section -->
+  <FAQs
+    title="Preguntas Frecuentes"
+    items={[
+      {
+        title: '¿Qué tipos de motores diagnostican?',
+        description: 'Trabajamos con motores Detroit, Cummins y otros modelos de maquinaria pesada.',
+      },
+      {
+        title: '¿Ofrecen servicios en terreno?',
+        description: 'Sí, contamos con servicios técnicos en terreno para atender tus necesidades donde lo requieras.',
+      },
+      {
+        title: '¿Qué sistemas de seguridad instalan?',
+        description: 'Instalamos jaulas virtuales, alarmas, semáforos y cámaras de retroceso.',
+      },
+      {
+        title: '¿Cómo garantizan la calidad del servicio?',
+        description: 'Utilizamos herramientas avanzadas y contamos con técnicos especializados para garantizar resultados óptimos.',
+      },
+    ]}
+  />
+</Layout>

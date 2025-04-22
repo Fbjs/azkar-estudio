@@ -1,0 +1,148 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+//import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Brands from '~/components/widgets/Brands.astro';
+import Button from '~/components/ui/Button.astro';
+import Slider from '~/components/widgets/Slider.astro';
+//import Note from '~/components/widgets/Note.astro';
+
+import besalco from '~/assets/images/besalco.png';
+import nexxo from '~/assets/images/nexxo.png';
+import reycam from '~/assets/images/reycam.png';
+import pesco from '~/assets/images/pesco.png';
+import andesgruas from '~/assets/images/andes-gruas.png';
+import flumec from '~/assets/images/flumec.png';
+import cipp from '~/assets/images/cipp.png';
+import sysmac from '~/assets/images/sysmac.png';
+
+
+//import Fondo from "~/layouts/Fondo.astro";
+
+
+
+const metadata = {
+  title: 'PPM Servicios — Especialistas en Mantenimiento y Reparación de Maquinaria Pesada',
+  ignoreTitleTemplate: true,
+};
+---
+<!--Fondo src="/videos/Index_video.mp4" /-->
+<Layout metadata={metadata}>
+
+  <Slider 
+    title="Especialistas en mantenimiento y reparación de maquinaria pesada"
+    subtitle="Minería, equipos especiales y maquinaria pesada. Servicio integral con estándares de fabricante."
+    class="relative overflow-hidden">
+  </Slider>
+  <!-- <Note />-->
+  
+  <!-- Features Section -->
+  <Features
+    id="features"
+    tagline="Servicios"
+    title="Lo que ofrecemos en PPM Servicios"
+    subtitle="Soluciones integrales para el mantenimiento y reparación de maquinaria pesada, minería y equipos especiales."
+    items={[
+      {
+        title: 'Mantención Preventiva',
+        description: 'Planes de mantención diseñados para maximizar la vida útil de tus equipos.',
+        icon: 'tabler:tool',
+      },
+      {
+        title: 'Servicio Spot en Terreno',
+        description: 'Atención rápida y eficiente donde lo necesites.',
+        icon: 'tabler:truck',
+      },
+      {
+        title: 'Automatización de Equipos',
+        description: 'Lleva tu maquinaria al siguiente nivel con control remoto y automatización.',
+        icon: 'tabler:device-desktop',
+      },
+      {
+        title: 'Scanner y Programación de Motores',
+        description: 'Diagnóstico avanzado con herramientas de última generación.',
+        icon: 'tabler:cpu',
+      },
+      {
+        title: 'Frenos y Revisión Técnica',
+        description: 'Cumple con las normativas y asegura el rendimiento de tus equipos.',
+        icon: 'tabler:settings',
+      },
+      {
+        title: 'Calibración de Blowers',
+        description: 'Optimización de equipos de alto vacío para un rendimiento superior.',
+        icon: 'tabler:wind',
+      },
+    ]}
+    
+  />
+
+  <!-- Stats Section -->
+  <div class="p-6">
+    <Stats
+      classes={{
+        container: 'container text-[var(--aw-color-text-heading)] bg-[var(--aw-color-bg-page)] dark:bg-[var(--aw-color-bg-page-dark)]',
+        title: 'text-[var(--aw-color-accent)]',
+        amount: 'text-[var(--aw-color-secondary)] dark:text-[var(--aw-color-accent)]',
+      }}
+      stats={[
+        { title: 'Clientes Satisfechos', amount: '200', symbol: '+' },
+        { title: 'Proyectos Completados', amount: '500', symbol: '+' },
+        { title: 'Años de Experiencia', amount: '15', symbol: '+' },
+        { title: 'Expertos en el Equipo', amount: '30', symbol: '+' },
+      ]}
+    />
+  </div>
+
+  <!-- Brands Section -->
+  <Brands
+    classes={{
+      container: 'text-[var(--aw-color-text-heading)] dark:bg-[var(--aw-color-bg-page-dark)] bg-[var(--aw-color-bg-page)] my-5',
+    }}
+    title="Clientes que confían en nosotros"
+    subtitle="En PPM Servicios, trabajamos con empresas líderes en el sector para ofrecer soluciones de alta calidad."
+    images={[
+      { src: besalco?.src, alt: 'Besalco' },
+      { src: nexxo?.src, alt: 'Nexxo' },
+      { src: reycam?.src, alt: 'Reycam' },
+      { src: pesco?.src, alt: 'Pesco' },
+      { src: andesgruas?.src, alt: 'Andes Grúas' },
+      { src: flumec?.src, alt: 'Flumec' },
+      { src: sysmac?.src, alt: 'Sysmac' },
+      { src: cipp?.src, alt: 'CIPP' },
+    ]}
+  />
+
+  <!-- Call to Action Section -->
+  <div class="px-6">
+    <CallToAction
+      actions={[
+        {
+          variant: 'primary',
+          text: 'Solicita más información',
+          href: 'mailto:ppacheco@ppmchile.com',
+          icon: 'tabler:mail',
+        },
+      ]}
+      classes={{
+        container: 'text-[var(--aw-color-text-heading)] dark:text-[var(--aw-color-text-default)]',
+        title: 'text-[var(--aw-color-secondary)] dark:text-[var(--aw-color-accent)]',
+        subtitle: 'text-[var(--aw-color-text-muted)] dark:text-[var(--aw-color-text-muted)]',
+      }}
+    >
+      <Fragment slot="title">
+        ¡Confía en <br class="block sm:hidden" /><span class="sm:whitespace-nowrap">PPM Servicios!</span>
+      </Fragment>
+
+      <Fragment slot="subtitle">
+        Contáctanos para más información sobre nuestros servicios y soluciones personalizadas.
+      </Fragment>
+
+      <Fragment slot="boton">
+        <Button variant="whatsapp" text="Cotiza tu Proyecto" phone="56963238857" />
+      </Fragment>
+    </CallToAction>
+  </div>
+</Layout>

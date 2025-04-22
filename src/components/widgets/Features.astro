@@ -1,0 +1,48 @@
+---
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import ItemGrid from '~/components/ui/ItemGrid.astro';
+import Headline from '~/components/ui/Headline.astro';
+import type { Features as Props } from '~/types';
+
+const {
+  title = await Astro.slots.render('title'),
+  subtitle = await Astro.slots.render('subtitle'),
+  tagline = await Astro.slots.render('tagline'),
+  items = [],
+  columns = 2,
+
+  defaultIcon,
+
+  id,
+  isDark = false,
+  classes = {},
+  bg = await Astro.slots.render('bg'),
+} = Astro.props;
+---
+
+<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-7xl ${classes?.container ?? ''}`} bg={bg}>
+  <div class="py-5 w-full my-5 rounded-xl backdrop-blur bg-[var(--aw-color-bg-page)] dark:bg-[var(--aw-color-bg-page-dark)]">
+    <Headline
+      title={title}
+      subtitle={subtitle}
+      tagline={tagline}
+      classes={{
+        title: 'text-[var(--aw-color-text-heading)] dark:text-[var(--aw-color-text-default)]',
+        subtitle: 'text-[var(--aw-color-text-muted)] dark:text-[var(--aw-color-text-muted)]',
+        tagline: 'text-[var(--aw-color-accent)] dark:text-[var(--aw-color-secondary)]',
+        ...(classes?.headline as Record<string, string>),
+      }}
+    />
+  </div>
+  <ItemGrid
+    items={items}
+    columns={columns}
+    defaultIcon={defaultIcon}
+    classes={{
+      container: '',
+      title: 'text-[var(--aw-color-text-heading)] dark:text-[var(--aw-color-text-default)] md:text-[1.3rem]',
+      icon: 'text-[var(--aw-color-text-button)] dark:text-[var(--aw-color-text-button)] bg-[var(--aw-color-accent)] dark:bg-[var(--aw-color-accent)] rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0',
+      ...((classes?.items as Record<string, never>) ?? {}),
+    }}
+  />
+</WidgetWrapper>

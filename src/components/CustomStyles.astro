@@ -1,0 +1,60 @@
+---
+import '@fontsource-variable/inter';
+---
+
+<style is:inline>
+  :root {
+  --aw-font-sans: 'InterVariable';
+  --aw-font-serif: 'InterVariable';
+  --aw-font-heading: 'InterVariable';
+
+  /* Colores principales */
+  --aw-color-primary: #d5e2f1; /* Azul pizarra profundo */
+  --aw-color-secondary: #1e293b; /* Azul grisáceo elegante */
+
+  --aw-color-accent: rgba(2, 23, 71, 0.9); /* Naranja quemado brillante */
+  --aw-color-whatsapp: #25d366;
+
+  /* Colores de texto */
+  --aw-color-text-heading: #161b2e; /* Blanco puro para títulos */
+  --aw-color-text-default: #5d656e; /* Gris claro azulado para texto común */
+  --aw-color-text-muted: #364357; /* Gris azulado sutil para texto secundario */
+  --aw-color-text-button: #c4ccd8; /* Gris azulado sutil para texto secundario */
+
+
+  /* Fondos */
+  --aw-color-bg-page: #f1f5f9;; /* Ideal si hay video de fondo */
+
+  ::selection {
+    background-color: #f97316;
+    color: white;
+  }
+}
+
+.dark {
+  --aw-font-sans: 'InterVariable';
+  --aw-font-serif: 'InterVariable';
+  --aw-font-heading: 'InterVariable';
+
+  --aw-color-primary: #141f3a;
+  --aw-color-secondary: #1e293b;
+
+  --aw-color-accent: #f7d61b; /* Naranja cálido para contraste en modo oscuro */
+  --aw-color-whatsapp: #25d366;
+
+  --aw-color-text-heading: #ffffff;
+  --aw-color-text-default: #e2e8f0;
+  --aw-color-text-muted: rgba(226, 232, 240, 0.6);
+  --aw-color-text-button:  rgba(2, 23, 71, 0.9);
+
+
+  --aw-color-bg-page: #0f172a; /* Oscurece video para legibilidad */
+
+  ::selection {
+    background-color: #fb923c;
+    color: black;
+  }
+}
+
+
+</style>

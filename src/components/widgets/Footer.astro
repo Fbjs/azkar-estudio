@@ -1,0 +1,152 @@
+---
+import { Icon } from 'astro-icon/components';
+import { getHomePermalink } from '~/utils/permalinks';
+import Logo from '~/components/Logo.astro';
+
+interface Link {
+  text?: string;
+  href?: string;
+  ariaLabel?: string;
+  icon?: string;
+}
+
+interface Links {
+  title?: string;
+  links: Array<Link>;
+}
+
+export interface Props {
+  links: Array<Links>;
+  secondaryLinks: Array<Link>;
+  socialLinks: Array<Link>;
+  footNote?: string;
+  theme?: string;
+}
+
+const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme = 'light' } = Astro.props;
+---
+
+<footer class:list={[
+  { dark: theme === 'dark' },
+  'backdrop-blur relative border-t border-[var(--aw-color-text-muted)] bg-[var(--aw-color-bg-page)] dark:bg-[var(--aw-color-bg-page)] dark:bg-opacity-80 not-prose',
+]}>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 text-[var(--aw-color-text-default)] dark:text-[var(--aw-color-text-default)]">
+    <div
+      class="grid grid-cols-1 md:grid-cols-5 gap-8 py-8 md:py-12 items-start"
+    >
+      <!-- Logo and Secondary Links -->
+      <div class="flex flex-col items-start gap-4">
+        <a class="flex items-center" href={getHomePermalink()}>
+          <Logo />
+        </a>
+        <div class="text-sm flex gap-1">
+          {
+            secondaryLinks.map(({ text, href }, index) => (
+              <>
+                {index !== 0 ? ' · ' : ''}
+                <a
+                  class="hover:text-[var(--aw-color-secondary)] dark:hover:text-[var(--aw-color-accent)] hover:underline transition duration-150 ease-in-out"
+                  href={href}
+                  set:html={text}
+                />
+              </>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Contact Information -->
+      <div class="flex flex-col gap-4">
+        <div class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="fill-current text-[var(--aw-color-text-heading)] dark:text-[var(--aw-color-text-default)] h-5 w-5">
+            <path d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z" />
+            <path d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z" />
+          </svg>
+          <div>
+            <p class="font-bold text-sm uppercase">Escríbenos a</p>
+            <a href="mailto:ppacheco@ppmchile.com" class="text-sm hover:text-[var(--aw-color-secondary)] dark:hover:text-[var(--aw-color-accent)] hover:underline transition duration-150 ease-in-out">
+              ppacheco@ppmchile.com
+            </a>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[var(--aw-color-text-heading)] dark:text-[var(--aw-color-text-default)] h-5 w-5">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
+            <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
+          </svg>
+          <div>
+            <p class="font-bold text-sm uppercase">Contacta un Asesor</p>
+            <a href="https://wa.me/56963238857?text=Hola,%20me%20gustaría%20recibir%20más%20información" target="_blank" class="text-sm hover:text-[var(--aw-color-secondary)] dark:hover:text-[var(--aw-color-accent)]">
+              +56 9 6323 8857
+            </a>
+            <a href="https://wa.me/56992525316?text=Hola,%20me%20gustaría%20recibir%20más%20información" target="_blank" class="text-sm hover:text-[var(--aw-color-secondary)] dark:hover:text-[var(--aw-color-accent)]">
+              +56 9 9252 5316
+            </a>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <svg class="fill-current text-[var(--aw-color-text-heading)] dark:text-[var(--aw-color-text-default)] h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"></path>
+          </svg>
+          <div>
+            <p class="font-bold text-md uppercase">Dirección</p>
+            <p class="text-sm text-[var(--aw-color-text-muted)]">Av. Eduardo Frei Montalva 815, Independencia, Santiago</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Links -->
+      {
+        links.map(({ title, links }) => (
+          <div>
+            <div class="font-medium mb-2 text-[var(--aw-color-text-heading)] dark:text-[var(--aw-color-text-default)]">{title}</div>
+            {links && Array.isArray(links) && links.length > 0 && (
+              <ul class="text-sm">
+                {links.map(({ text, href, ariaLabel }) => (
+                  <li class="mb-2">
+                    <a
+                      class="hover:text-[var(--aw-color-secondary)] dark:hover:text-[var(--aw-color-accent)] hover:underline transition duration-150 ease-in-out"
+                      href={href}
+                      aria-label={ariaLabel}
+                    >
+                      <Fragment set:html={text} />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        ))
+      }
+    </div>
+    <div class="flex items-center justify-between py-6 md:py-8">
+      {
+        socialLinks?.length ? (
+          <ul class="flex gap-4">
+            {socialLinks.map(({ ariaLabel, href, text, icon }) => (
+              <li>
+                <a
+                  class="hover:text-[var(--aw-color-secondary)] dark:hover:text-[var(--aw-color-accent)] focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+                  aria-label={ariaLabel}
+                  href={href}
+                >
+                  {icon && <Icon name={icon} class="w-5 h-5" />}
+                  <Fragment set:html={text} />
+                </a>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          ''
+        )
+      }
+
+      <div class="text-sm text-[var(--aw-color-text-muted)]">
+        <Fragment set:html={footNote} />
+      </div>
+    </div>
+  </div>
+</footer>

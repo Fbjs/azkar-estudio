@@ -1,0 +1,129 @@
+---
+import Layout from '~/layouts/LandingLayoutServices.astro';
+
+import Hero2 from '~/components/widgets/Hero2.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Features from '~/components/widgets/Features.astro';
+//import Stats from '~/components/widgets/Stats.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Button from '~/components/ui/Button.astro';
+
+import HeroImage from '~/assets/images/maquinaria-pesada.jpg';
+
+const metadata = {
+  title: 'Repuestos - PPM Servicios',
+  ignoreTitleTemplate: true,
+};
+---
+<Layout metadata={metadata}>
+  <!-- Hero Section -->
+  <Hero2
+    tagline="Repuestos"
+    title="Repuestos de Alta Calidad para Maquinaria Pesada"
+    subtitle="Ofrecemos una amplia gama de repuestos originales y alternativos para garantizar el óptimo rendimiento de tus equipos."
+    image={{
+      src: HeroImage,
+      alt: 'Repuestos para maquinaria pesada',
+    }}
+  >
+    <Fragment slot="boton">
+      <Button variant="formulario" text="Cotiza tus Repuestos" />
+      <Button variant="whatsapp" text="Contáctanos por WhatsApp" phone="56963238857" />
+    </Fragment>
+  </Hero2>
+
+  <!-- Stats Section 
+  <Stats
+    classes={{
+      container: 'stat-container bg-dark bg-opacity-70 my-10',
+    }}
+    title="Resultados de Nuestros Servicios"
+    subtitle="Garantizamos calidad y disponibilidad en cada repuesto que ofrecemos."
+    stats={[
+      { title: 'Repuestos Disponibles', amount: '10,000', symbol: '+' },
+      { title: 'Clientes Satisfechos', amount: '500', symbol: '+' },
+      { title: 'Años de Experiencia', amount: '15', symbol: '+' },
+      { title: 'Marcas Compatibles', amount: '50', symbol: '+' },
+    ]}
+  />-->
+
+  <!-- Features Section -->
+  <Features
+    title="Nuestros Repuestos"
+    subtitle="Trabajamos con repuestos originales y alternativos para satisfacer tus necesidades."
+    columns={3}
+    items={[
+      {
+        title: 'Filtros Manga y Canastillos',
+        description: 'Repuestos de alta calidad para sistemas de filtración industrial.',
+        icon: 'tabler:filter',
+      },
+      {
+        title: 'Instrumentos de Precisión',
+        description: 'Marcas como Wika, Hirschmann, Creer y Kruger para garantizar precisión y confiabilidad.',
+        icon: 'tabler:gauge',
+      },
+      {
+        title: 'Grúas y Equipos Pesados',
+        description: 'Repuestos para Grove, National, Manitex, Terex y más.',
+        icon: 'tabler:crane',
+      },
+      {
+        title: 'Sistemas de Monitoreo',
+        description: 'Trimble, anemómetros y semáforos de carga para garantizar seguridad en operaciones.',
+        icon: 'tabler:device-desktop',
+      },
+      {
+        title: 'Controles y Alarmas',
+        description: 'Controles remotos y alarmas de giro para equipos especializados.',
+        icon: 'tabler:bell',
+      },
+      {
+        title: 'Kits Mineros y Pedidos Especiales',
+        description: 'Soluciones personalizadas para la industria minera y pedidos específicos.',
+        icon: 'tabler:box',
+      },
+    ]}
+  />
+
+  <!-- Call to Action Section -->
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        target: '_blank',
+        text: 'Solicita tus Repuestos',
+        href: 'https://wa.me/56963238857?text=Quiero%20solicitar%20repuestos%20para%20mi%20maquinaria',
+        icon: 'tabler:message-circle',
+      },
+    ]}
+  >
+    <Fragment slot="title">Confía en PPM Servicios</Fragment>
+    <Fragment slot="subtitle">
+      Contamos con una amplia gama de repuestos para garantizar el óptimo funcionamiento de tus equipos.
+    </Fragment>
+  </CallToAction>
+
+  <!-- FAQs Section -->
+  <FAQs
+    title="Preguntas Frecuentes"
+    items={[
+      {
+        title: '¿Qué tipos de repuestos ofrecen?',
+        description: 'Ofrecemos repuestos originales y alternativos para maquinaria pesada, equipos de minería y más.',
+      },
+      {
+        title: '¿Tienen repuestos en stock?',
+        description: 'Sí, contamos con un amplio stock para garantizar tiempos de entrega rápidos.',
+      },
+      {
+        title: '¿Ofrecen garantía en los repuestos?',
+        description: 'Sí, todos nuestros repuestos cuentan con garantía de calidad.',
+      },
+      {
+        title: '¿Pueden ayudarme a elegir el repuesto adecuado?',
+        description: 'Por supuesto, nuestro equipo técnico está disponible para asesorarte.',
+      },
+    ]}
+  />
+</Layout>

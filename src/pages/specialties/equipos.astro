@@ -1,0 +1,130 @@
+---
+import Layout from '~/layouts/LandingLayoutProduct.astro';
+
+import Hero2 from '~/components/widgets/Hero2.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Features from '~/components/widgets/Features.astro';
+//import Stats from '~/components/widgets/Stats.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Button from '~/components/ui/Button.astro';
+
+import HeroImage from '~/assets/images/maquinaria-pesada.jpg';
+
+
+const metadata = {
+  title: 'Equipos Especializados - PPM Servicios',
+  ignoreTitleTemplate: true,
+};
+---
+<Layout metadata={metadata}>
+  <!-- Hero Section -->
+  <Hero2
+    tagline="Equipos Especializados"
+    title="Soluciones para Equipos de Maquinaria Pesada y Minería"
+    subtitle="Ofrecemos servicios especializados para una amplia gama de equipos, garantizando su rendimiento y seguridad."
+    image={{
+      src: HeroImage,
+      alt: 'Equipos especializados de maquinaria pesada',
+    }}
+  >
+    <Fragment slot="boton">
+      <Button variant="formulario">
+        Solicita una Cotización
+      </Button>
+      <Button
+        variant="whatsapp"
+        text="Más información"
+        phone="56963238857"
+      />
+    </Fragment>
+  </Hero2>
+
+  <!-- Stats Section 
+  <Stats
+    classes={{
+      container: 'stat-container bg-dark bg-opacity-70 my-10',
+    }}
+    title="Resultados de Nuestros Servicios"
+    subtitle="Trabajamos con equipos especializados para garantizar la calidad y el rendimiento."
+    stats={[
+      { title: 'Equipos Mantenidos', amount: '500', symbol: '+' },
+      { title: 'Clientes Satisfechos', amount: '200', symbol: '+' },
+      { title: 'Años de Experiencia', amount: '15', symbol: '+' },
+      { title: 'Proyectos Completados', amount: '300', symbol: '+' },
+    ]}
+  />-->
+
+  <!-- Features Section -->
+  <Features
+    title="Nuestros Equipos Especializados"
+    subtitle="Trabajamos con una amplia gama de equipos para satisfacer tus necesidades."
+    columns={3}
+    items={[
+      {
+        title: 'Grúas Telescópicas, Articuladas y Horquillas',
+        description: 'Mantenimiento y reparación de grúas para garantizar su seguridad y funcionalidad.',
+        icon: 'tabler:crane',
+      },
+      {
+        title: 'Camiones Aspiradores y Combinados',
+        description: 'Servicios especializados para equipos de limpieza industrial.',
+        icon: 'tabler:truck',
+      },
+      {
+        title: 'Equipos de Lavado 15K',
+        description: 'Optimización y mantenimiento de equipos de alta presión.',
+        icon: 'tabler:droplet',
+      },
+      {
+        title: 'Alza Hombres y Lava Aisladores',
+        description: 'Revisión y mantenimiento para garantizar la seguridad en altura.',
+        icon: 'tabler:ladder',
+      },
+      {
+        title: 'Compactadores, Retroexcavadoras y Mini Cargadores',
+        description: 'Servicios integrales para maquinaria de construcción.',
+        icon: 'tabler:bulldozer',
+      },
+      {
+        title: 'Luminarias, Lubricadores y Tolvas',
+        description: 'Mantenimiento preventivo y correctivo para equipos auxiliares.',
+        icon: 'tabler:bulb',
+      },
+    ]}
+  />
+
+  <!-- Call to Action Section -->
+  <CallToAction
+    actions={[
+      {
+        variant: 'whatsapp',
+        phone: '56963238857',
+        text: 'Cotiza tu Proyecto',
+      },
+    ]}
+  >
+    <Fragment slot="title">Confía en Nuestros Servicios Especializados</Fragment>
+    <Fragment slot="subtitle">
+      Contáctanos para más información sobre nuestros servicios para equipos especializados.
+    </Fragment>
+  </CallToAction>
+
+  <!-- FAQs Section -->
+  <FAQs
+    title="Preguntas Frecuentes"
+    items={[
+      {
+        title: '¿Qué tipos de equipos atienden?',
+        description: 'Trabajamos con grúas, camiones aspiradores, equipos de lavado, alza hombres, compactadores y más.',
+      },
+      {
+        title: '¿Ofrecen mantenimiento preventivo?',
+        description: 'Sí, ofrecemos planes de mantenimiento preventivo para maximizar la vida útil de tus equipos.',
+      },
+      {
+        title: '¿Pueden atender equipos en terreno?',
+        description: 'Sí, contamos con servicios en terreno para atender tus equipos donde lo necesites.',
+      },
+    ]}
+  />
+</Layout>

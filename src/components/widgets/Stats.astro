@@ -1,0 +1,86 @@
+---
+import type { Stats as Props } from '~/types';
+import WidgetWrapper from '../ui/WidgetWrapper.astro';
+import Headline from '../ui/Headline.astro';
+import { Icon } from 'astro-icon/components';
+
+const {
+  title = await Astro.slots.render('title'),
+  subtitle = await Astro.slots.render('subtitle'),
+  tagline,
+  stats = [],
+  id,
+  isDark = false,
+  classes = {},
+  bg = await Astro.slots.render('bg'),
+} = Astro.props;
+---
+
+<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-6xl mx-auto fondo-oscuro bg-dark bg-opacity-70 my-10 rounded-xl ${classes?.container ?? ''}`} bg={bg}>
+  <Headline title={title} subtitle={subtitle} tagline={tagline} />
+  <div class="flex flex-wrap justify-center -m-4 text-center">
+    {
+      stats &&
+        stats.map(({ amount, title, icon, symbol }) => (
+          <div class="p-4 md:w-1/4 sm:w-1/2 w-full min-w-[220px] text-center md:border-r md:last:border-none dark:md:border-slate-500">
+            {icon && (
+              <div class="flex items-center justify-center mx-auto mb-4 text-primary">
+                <Icon name={icon} class="w-10 h-10" />
+              </div>
+            )}
+            <div class="font-heading text-primary text-[2.6rem] font-bold dark:text-white lg:text-5xl xl:text-6xl">
+              <span class="counter" data-target={amount.replace('+', '').replace('%', '')}>0</span>{symbol}
+            </div>
+            {title && (
+              <div class="text-sm font-medium uppercase tracking-widest text-gray-800 dark:text-slate-400 lg:text-base">
+                {title}
+              </div>
+            )}
+          </div>
+        ))
+    }
+  </div>
+</WidgetWrapper>
+
+<script>
+  // Función para el conteo
+  const counters = document.querySelectorAll('.counter');
+
+  const startCounting = (counter) => {
+    const target = +counter.getAttribute('data-target');
+    let count = 0;
+    const duration = 2000; // Duración del conteo en milisegundos
+    const incrementTime = duration / target;
+
+    const increment = () => {
+      if (count < target) {
+        count++;
+        counter.textContent = count;
+        setTimeout(increment, incrementTime);
+      } else {
+        counter.textContent = target; // Asegúrate de que muestre el valor final
+      }
+    };
+
+    increment();
+  };
+
+  const options = {
+    root: null, // Observa el viewport
+    threshold: 0.1, // Activar cuando el 10% del componente esté visible
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        counters.forEach(counter => startCounting(counter));
+        observer.unobserve(entry.target); // Dejar de observar una vez que se activa el conteo
+      }
+    });
+  }, options);
+
+  // Observa cada contador
+  counters.forEach(counter => {
+    observer.observe(counter);
+  });
+</script>

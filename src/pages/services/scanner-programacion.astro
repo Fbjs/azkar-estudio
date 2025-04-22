@@ -1,0 +1,129 @@
+---
+import Layout from '~/layouts/LandingLayoutServices.astro';
+
+import Hero2 from '~/components/widgets/Hero2.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+//import Stats from '~/components/widgets/Stats.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Button from '~/components/ui/Button.astro';
+import HeroImage from '~/assets/images/maquinaria-pesada.jpg';
+
+
+
+const metadata = {
+  title: 'Scanner y Programación de Motores - PPM Servicios',
+  ignoreTitleTemplate: true,
+};
+---
+<Layout metadata={metadata}>
+  <!-- Hero Section -->
+  <Hero2
+    tagline="Scanner y Programación de Motores"
+    title="Diagnóstico Avanzado y Programación de Motores"
+    subtitle="Utilizamos herramientas de última generación para diagnosticar y programar motores de maquinaria pesada y equipos especializados."
+    image={{
+      src: HeroImage,
+      alt: 'Scanner y programación de motores',
+    }}
+  >
+    <Fragment slot="boton">
+      <Button variant="formulario">
+        Solicita una Cotización
+      </Button>
+      <Button
+        variant="whatsapp"
+        text="Más información"
+        phone="56963238857"
+      />
+    </Fragment>
+  </Hero2>
+
+  <!-- Features Section -->
+  <Features2
+    classes={{ container: 'my-10' }}
+    title="Beneficios del Scanner y Programación de Motores"
+    subtitle="Nuestros servicios están diseñados para garantizar el óptimo rendimiento y la eficiencia de tus motores."
+    items={[
+      {
+        title: 'Diagnóstico Preciso',
+        description: 'Identificamos problemas con exactitud utilizando herramientas avanzadas.',
+        icon: 'tabler:search',
+      },
+      {
+        title: 'Optimización del Rendimiento',
+        description: 'Ajustamos los parámetros del motor para maximizar su eficiencia.',
+        icon: 'tabler:settings',
+      },
+      {
+        title: 'Compatibilidad con Múltiples Marcas',
+        description: 'Trabajamos con motores Cummins, Detroit, Wabco, Navistar, Mack, entre otros.',
+        icon: 'tabler:cpu',
+      },
+    ]}
+  />
+
+  <!-- Stats Section 
+  <Stats
+    classes={{
+      container: 'fondo-oscuro bg-dark bg-opacity-70 my-10',
+    }}
+    title="Resultados de Nuestros Servicios"
+    stats={[
+      { title: 'Motores Diagnosticados', amount: '400', symbol: '+' },
+      { title: 'Clientes Satisfechos', amount: '200', symbol: '+' },
+      { title: 'Años de Experiencia', amount: '15', symbol: '+' },
+      { title: 'Proyectos Completados', amount: '500', symbol: '+' },
+    ]}
+  />-->
+
+  <!-- Call to Action Section -->
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        target: '_blank',
+        text: 'Contáctanos hoy',
+        href: '/contact',
+        icon: 'tabler:message-circle',
+      },
+    ]}
+  >
+    <Fragment slot="title">Confía en PPM Servicios</Fragment>
+    <Fragment slot="subtitle">
+      Nuestro servicio de scanner y programación de motores garantiza un diagnóstico preciso y ajustes personalizados para tus equipos.
+    </Fragment>
+    <Fragment slot="boton">
+      <Button variant="primary" class="open-modal-btn">
+        Cotiza tu Proyecto
+      </Button>
+    </Fragment>
+  </CallToAction>
+
+  <!-- FAQs Section -->
+  <FAQs
+    title="Preguntas Frecuentes"
+    items={[
+      {
+        title: '¿Qué incluye el servicio de scanner y programación?',
+        description:
+          'Incluye diagnóstico avanzado, ajuste de parámetros y programación personalizada para motores de maquinaria pesada.',
+      },
+      {
+        title: '¿Qué marcas de motores son compatibles?',
+        description:
+          'Trabajamos con motores Cummins, Detroit, Wabco, Navistar, Mack, entre otros.',
+      },
+      {
+        title: '¿Cuánto tiempo toma el diagnóstico?',
+        description:
+          'El tiempo depende del tipo de motor y la complejidad del problema, pero garantizamos un servicio eficiente.',
+      },
+      {
+        title: '¿Cómo puedo solicitar este servicio?',
+        description:
+          'Puedes contactarnos a través de nuestro formulario en línea o por WhatsApp para recibir más información y una cotización personalizada.',
+      },
+    ]}
+  />
+</Layout>

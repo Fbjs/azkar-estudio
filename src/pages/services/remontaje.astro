@@ -1,0 +1,128 @@
+---
+import Layout from '~/layouts/LandingLayoutServices.astro';
+
+import Hero2 from '~/components/widgets/Hero2.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+//import Stats from '~/components/widgets/Stats.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Button from '~/components/ui/Button.astro';
+import HeroImage from '~/assets/images/maquinaria-pesada.jpg';
+
+
+const metadata = {
+  title: 'Remontaje de Equipos - PPM Servicios',
+  ignoreTitleTemplate: true,
+};
+---
+<Layout metadata={metadata}>
+  <!-- Hero Section -->
+  <Hero2
+    tagline="Remontaje de Equipos"
+    title="Servicio Especializado en Remontaje de Equipos"
+    subtitle="Ofrecemos soluciones completas para el desmontaje, traslado y remontaje de equipos de maquinaria pesada y equipos especializados."
+    image={{
+      src: HeroImage,
+      alt: 'Remontaje de equipos de maquinaria pesada',
+    }}
+  >
+    <Fragment slot="boton">
+      <Button variant="formulario">
+        Solicita una Cotización
+      </Button>
+      <Button
+        variant="whatsapp"
+        text="Más información"
+        phone="56963238857"
+      />
+    </Fragment>
+  </Hero2>
+
+  <!-- Features Section -->
+  <Features2
+    classes={{ container: 'my-10' }}
+    title="Beneficios del Remontaje de Equipos"
+    subtitle="Nuestros servicios están diseñados para garantizar un remontaje seguro y eficiente."
+    items={[
+      {
+        title: 'Desmontaje Seguro',
+        description: 'Realizamos el desmontaje de equipos con precisión y cuidado para evitar daños.',
+        icon: 'tabler:tool',
+      },
+      {
+        title: 'Traslado Eficiente',
+        description: 'Coordinamos el traslado de equipos asegurando tiempos óptimos y seguridad.',
+        icon: 'tabler:truck',
+      },
+      {
+        title: 'Remontaje Preciso',
+        description: 'Garantizamos el correcto ensamblaje y funcionamiento de los equipos en su nueva ubicación.',
+        icon: 'tabler:settings',
+      },
+    ]}
+  />
+
+  <!-- Stats Section 
+  <Stats
+    classes={{
+      container: 'fondo-oscuro bg-dark bg-opacity-70 my-10',
+    }}
+    title="Resultados de Nuestros Servicios"
+    stats={[
+      { title: 'Equipos Remontados', amount: '250', symbol: '+' },
+      { title: 'Clientes Satisfechos', amount: '200', symbol: '+' },
+      { title: 'Años de Experiencia', amount: '15', symbol: '+' },
+      { title: 'Proyectos Completados', amount: '500', symbol: '+' },
+    ]}
+  />-->
+
+  <!-- Call to Action Section -->
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        target: '_blank',
+        text: 'Contáctanos hoy',
+        href: '/contact',
+        icon: 'tabler:message-circle',
+      },
+    ]}
+  >
+    <Fragment slot="title">Confía en PPM Servicios</Fragment>
+    <Fragment slot="subtitle">
+      Nuestro servicio de remontaje de equipos garantiza un proceso seguro, eficiente y adaptado a tus necesidades.
+    </Fragment>
+    <Fragment slot="boton">
+      <Button variant="primary" class="open-modal-btn">
+        Cotiza tu Proyecto
+      </Button>
+    </Fragment>
+  </CallToAction>
+
+  <!-- FAQs Section -->
+  <FAQs
+    title="Preguntas Frecuentes"
+    items={[
+      {
+        title: '¿Qué incluye el servicio de remontaje de equipos?',
+        description:
+          'Incluye desmontaje, traslado y remontaje completo de equipos, asegurando su correcto funcionamiento.',
+      },
+      {
+        title: '¿Qué tipos de equipos pueden ser remontados?',
+        description:
+          'Trabajamos con maquinaria pesada, equipos de minería y otros sistemas industriales.',
+      },
+      {
+        title: '¿Cuánto tiempo toma el remontaje?',
+        description:
+          'El tiempo depende del tamaño y complejidad del equipo, pero garantizamos un servicio eficiente.',
+      },
+      {
+        title: '¿Cómo puedo solicitar este servicio?',
+        description:
+          'Puedes contactarnos a través de nuestro formulario en línea o por WhatsApp para recibir más información y una cotización personalizada.',
+      },
+    ]}
+  />
+</Layout>

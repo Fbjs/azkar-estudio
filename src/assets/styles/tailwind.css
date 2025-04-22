@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .bg-page {
+    background-color: var(--aw-color-bg-page);
+  }
+  .bg-dark {
+    /*background-color: var(--aw-color-bg-page-dark);*/
+    background-color: rgb(3 6 32 / var(--tw-bg-opacity, 1));
+    /*opacity: 0.7;*/
+  }
+  .bg-light {
+    background-color: var(--aw-color-bg-page);
+  }
+  .text-page {
+    color: var(--aw-color-text-page);
+  }
+  .text-muted {
+    color: var(--aw-color-text-muted);
+  }
+
+  .bg-neighbour {
+    background-image: url('~/assets/images/neighbour-hero.webp');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .bg-marketing {
+    background-image: url('/src/assets/images/fondo_marketing_1.jpg'); /* Reemplaza con la ruta a tu imagen */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    width: 100%;
+    height: 100%;
+  }
+
+  .bg-slider1-neighbour {
+    background-image: url('~/assets/images/slider_1.mp4');
+    background-size: cover;
+    background-position: center;
+  }
+
+  /* Parallax video or image container styling */
+  .parallax-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; /* Cambiar de 100vw a 100% para evitar scroll horizontal */
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1; /* Envía el fondo al fondo */
+  }
+
+  .parallax-video, .parallax-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover; /* Asegura que el video o imagen cubra la pantalla completamente */
+    object-position: center; /* Centra la imagen o video */
+    z-index: -1;
+  }
+
+  /* Asegurar que el contenido cubra la pantalla completa */
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden; /* Elimina el scroll horizontal */
+    overflow-y: auto;   /* Asegura que el scroll vertical funcione correctamente */
+  }
+
+  .page-content {
+    position: relative;
+    z-index: 1; /* Coloca el contenido sobre el video */
+    min-height: 100vh; /* Asegura que cubra al menos el 100% del alto de la pantalla */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra verticalmente el contenido */
+    align-items: center; /* Centra horizontalmente el contenido */
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo semitransparente para mejor legibilidad */
+  }
+
+  /* Estilos para pantallas más pequeñas */
+  @media (max-width: 768px) {
+    .page-content {
+      padding: 50px 15px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .page-content {
+      padding: 30px 10px;
+    }
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    @apply bg-gradient-to-br from-indigo-500 via-fuchsia-500 to-pink-500;
+  }
+  .gradient-text-subtitle {
+    @apply bg-clip-text text-transparent;
+    @apply bg-gradient-to-br from-blue-400 via-teal-400 to-cyan-400;
+  }
+
+  .gradient-text-subtitle1 {
+    @apply bg-clip-text text-transparent;
+    @apply bg-gradient-to-br from-green-400 via-lime-400 to-emerald-400;
+  }
+
+  .gradient-text-subtitle2 {
+    @apply bg-clip-text text-transparent;
+    @apply bg-gradient-to-br from-orange-400 via-yellow-400 to-amber-400;
+  }
+
+  .gradient-text-subtitle3 {
+    @apply bg-clip-text text-transparent;
+    @apply bg-gradient-to-br from-purple-400 via-pink-300 to-rose-400;
+  }
+
+  .gradient-text-subtitle {
+    @apply bg-clip-text text-transparent;
+    @apply bg-gradient-to-br from-gray-400 via-gray-300 to-slate-400;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center rounded-full border-gray-400 border bg-transparent font-medium text-center text-base text-page leading-snug transition py-3.5 px-6 md:px-8 ease-in duration-200 focus:ring-blue-500 focus:ring-offset-blue-200 focus:ring-2 focus:ring-offset-2 hover:bg-gray-100 hover:border-gray-600 dark:text-slate-300 dark:border-slate-500 dark:hover:bg-slate-800 dark:hover:border-slate-800 cursor-pointer;
+  }
+
+  .btn-primary {
+    @apply btn font-semibold bg-primary text-white border-primary hover:bg-secondary hover:border-secondary hover:text-white dark:text-white dark:bg-primary dark:border-primary dark:hover:border-secondary dark:hover:bg-secondary;
+  }
+
+  .btn-secondary {
+    @apply btn;
+  }
+
+  .btn-tertiary {
+    @apply btn border-none shadow-none text-muted hover:text-gray-900 dark:text-gray-400 dark:hover:text-white;
+  }
+}
+
+/* Para header */
+#header.scroll > div:first-child {
+  @apply bg-page md:bg-white/90 md:backdrop-blur-md;
+  box-shadow: 0 0.375rem 1.5rem 0 rgb(140 152 164 / 13%);
+}
+.dark #header.scroll > div:first-child,
+#header.scroll.dark > div:first-child {
+  @apply bg-page md:bg-[#030621e6] border-b border-gray-500/20;
+  box-shadow: none;
+}
+
+#header.expanded nav {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  bottom: 70px !important;
+  padding: 0 5px;
+}
+
+.dropdown:focus .dropdown-menu,
+.dropdown:focus-within .dropdown-menu,
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+[data-aw-toggle-menu] path {
+  @apply transition;
+}
+[data-aw-toggle-menu].expanded g > path:first-child {
+  @apply -rotate-45 translate-y-[15px] translate-x-[-3px];
+}
+
+[data-aw-toggle-menu].expanded g > path:last-child {
+  @apply rotate-45 translate-y-[-8px] translate-x-[14px];
+}

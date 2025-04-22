@@ -1,0 +1,88 @@
+---
+import { Icon } from 'astro-icon/components';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import Headline from '~/components/ui/Headline.astro';
+import Button from '~/components/ui/Button.astro';
+import Image from '~/components/common/Image.astro';
+
+import type { Steps as Props } from '~/types';
+
+const {
+  title = await Astro.slots.render('title'),
+  subtitle = await Astro.slots.render('subtitle'),
+  tagline,
+  callToAction = await Astro.slots.render('callToAction'),
+  items = [],
+  image, // Nueva prop para la imagen
+  isReversed = false,
+
+  id,
+  isDark = false,
+  classes = {},
+  bg = await Astro.slots.render('bg'),
+} = Astro.props;
+---
+
+<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-6xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
+  <div class={`flex flex-col gap-8 md:gap-12 md:flex-row ${isReversed ? 'md:flex-row-reverse' : ''}`}>
+    
+
+    <!-- Contenido principal -->
+    <div class="w-full lg:w-1/2">
+      <div class="s2-container rounded-lg bg-[var(--aw-color-bg-page)] dark:bg-[var(--aw-color-bg-page-dark)] bg-opacity-60 backdrop-blur p-6 my-8">
+        <Headline
+          title={title}
+          subtitle={subtitle}
+          tagline={tagline}
+          classes={{
+            container: 'text-center md:text-left rtl:md:text-right mb-4 md:mb-8',
+            title: 's2-title mb-4 text-3xl lg:text-4xl font-bold font-heading text-[var(--aw-color-accent)] dark:text-[var(--aw-color-accent)]',
+            subtitle: 's2-des mb-8 text-xl text-[var(--aw-color-text-muted)] dark:text-[var(--aw-color-text-muted)]',
+          }}
+        />
+        <ul class="space-y-10">
+          {items.map(({ title: itemTitle, description, icon }, index) => (
+            <li class="flex md:-mx-4">
+              <div class="pr-4 sm:pl-4 rtl:pr-0 rtl:pl-4 rtl:sm:pl-0 rtl:sm:pr-4">
+                <span class="s2-icon flex w-16 h-16 mx-auto items-center justify-center text-2xl font-bold rounded-full bg-[var(--aw-color-accent)] dark:bg-[var(--aw-color-accent)] text-[var(--aw-color-text-button)] dark:text-[var(--aw-color-text-button)]">
+                  {icon ? <Icon name={icon} class="w-6 h-6 icon-bold" /> : index + 1}
+                </span>
+              </div>
+              <div class="pl-4 rtl:pl-0 rtl:pr-4">
+                <h3 class="s2-icon-title mb-4 text-xl font-semibold font-heading text-[var(--aw-color-text-heading)] dark:text-[var(--aw-color-text-default)]" set:html={itemTitle} />
+                <p class="s2-icon-des text-[var(--aw-color-text-muted)] dark:text-[var(--aw-color-text-muted)]" set:html={description} />
+              </div>
+            </li>
+          ))}
+        </ul>
+        {callToAction && callToAction.text && callToAction.href && (
+          <div class="mt-8 text-center md:text-left">
+            <Button variant="primary" {...callToAction} class="mb-12 w-auto bg-[var(--aw-color-accent)] dark:bg-[var(--aw-color-secondary)] text-[var(--aw-color-text-heading)] dark:text-[var(--aw-color-text-default)]" />
+          </div>
+        )}
+      </div>
+    </div>
+
+    <!-- Imagen -->
+    {
+      image && (
+        <div class="relative md:basis-1/2">
+          {typeof image === 'string' ? (
+            <Fragment set:html={image} />
+          ) : (
+            <Image
+              class="inset-0 object-cover object-top w-full rounded-md shadow-lg md:absolute md:h-full bg-gray-400 dark:bg-slate-700"
+              widths={[400, 768]}
+              sizes="(max-width: 768px) 100vw, 432px"
+              width={432}
+              height={768}
+              layout="cover"
+              src={image?.src}
+              alt={image?.alt || ''}
+            />
+          )}
+        </div>
+      )
+    }
+  </div>
+</WidgetWrapper>

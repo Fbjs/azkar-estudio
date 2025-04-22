@@ -1,0 +1,60 @@
+---
+import FormContainer from '~/components/ui/Form.astro';
+import Headline from '~/components/ui/Headline.astro';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import type { Contact as Props } from '~/types';
+
+const {
+  title = 'Contáctanos',
+  subtitle = 'Estamos aquí para ayudarte',
+  tagline = 'PPM Servicios',
+  inputs = [
+    { label: 'Nombre', type: 'text', name: 'name', placeholder: 'Ingresa tu nombre' },
+    { label: 'Correo Electrónico', type: 'email', name: 'email', placeholder: 'Ingresa tu correo' },
+    { label: 'Teléfono', type: 'tel', name: 'phone', placeholder: 'Ingresa tu teléfono' },
+  ],
+  textarea = { label: 'Mensaje', name: 'message', placeholder: 'Escribe tu mensaje aquí' },
+  disclaimer = 'Al enviar este formulario, aceptas nuestras políticas de privacidad.',
+  button = { text: 'Enviar Mensaje', type: 'submit' },
+  description = 'Completa el formulario y nos pondremos en contacto contigo lo antes posible.',
+
+  id,
+  isDark = false,
+  classes = {},
+  bg = await Astro.slots.render('bg'),
+} = Astro.props;
+---
+
+<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-7xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
+  <div class="bg-[var(--aw-color-bg-page)] dark:bg-[var(--aw-color-bg-page)] bg-opacity-70 backdrop-blur rounded-xl py-5 w-full mb-5">
+    <Headline
+      title={title}
+      subtitle={subtitle}
+      tagline={tagline}
+      classes={{
+        title: 'text-[var(--aw-color-text-heading)] dark:text-[var(--aw-color-text-default)] text-3xl font-bold',
+        subtitle: 'text-[var(--aw-color-text-muted)] dark:text-[var(--aw-color-text-muted)] text-lg',
+        tagline: 'text-[var(--aw-color-accent)] dark:text-[var(--aw-color-secondary)] font-medium',
+      }}
+    />
+  </div>
+  {
+    inputs && (
+      <div class="flex flex-col max-w-xl mx-auto rounded-lg backdrop-blur border border-[var(--aw-color-text-muted)] bg-[var(--aw-color-bg-page)] dark:bg-[var(--aw-color-bg-page)] bg-opacity-70 shadow p-4 sm:p-6 lg:p-8 w-full">
+        <FormContainer
+          inputs={inputs}
+          textarea={textarea}
+          disclaimer={disclaimer}
+          button={button}
+          description={description}
+          classes={{
+            input: 'border border-[var(--aw-color-text-muted)] rounded-md p-2 text-[var(--aw-color-text-default)] dark:text-[var(--aw-color-text-default)] bg-[var(--aw-color-bg-page)] dark:bg-[var(--aw-color-bg-page-dark)]',
+            textarea: 'border border-[var(--aw-color-text-muted)] rounded-md p-2 text-[var(--aw-color-text-default)] dark:text-[var(--aw-color-text-default)] bg-[var(--aw-color-bg-page)] dark:bg-[var(--aw-color-bg-page-dark)]',
+            button: 'bg-[var(--aw-color-accent)] dark:bg-[var(--aw-color-secondary)] text-[var(--aw-color-text-heading)] dark:text-[var(--aw-color-text-default)] font-bold py-2 px-4 rounded-md hover:opacity-90',
+            disclaimer: 'text-[var(--aw-color-text-muted)] dark:text-[var(--aw-color-text-muted)] text-sm mt-4',
+          }}
+        />
+      </div>
+    )
+  }
+</WidgetWrapper>

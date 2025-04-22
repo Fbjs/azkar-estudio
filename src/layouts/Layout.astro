@@ -1,0 +1,569 @@
+---
+import '~/assets/styles/tailwind.css';
+
+import { I18N } from 'astrowind:config';
+
+import CommonMeta from '~/components/common/CommonMeta.astro';
+import Favicons from '~/components/Favicons.astro';
+import CustomStyles from '~/components/CustomStyles.astro';
+import ApplyColorMode from '~/components/common/ApplyColorMode.astro';
+import Metadata from '~/components/common/Metadata.astro';
+import SiteVerification from '~/components/common/SiteVerification.astro';
+import Analytics from '~/components/common/Analytics.astro';
+import BasicScripts from '~/components/common/BasicScripts.astro';
+import ContactUs from '~/components/widgets/ContactForm.astro';
+
+// Comment the line below to disable View Transitions
+//import { ViewTransitions } from 'astro:transitions';
+
+import type { MetaData as MetaDataType } from '~/types';
+
+export interface Props {
+  metadata?: MetaDataType;
+}
+
+const { metadata = {} } = Astro.props;
+const { language, textDirection } = I18N;
+
+---
+
+<!doctype html>
+<html lang={language} dir={textDirection} class="2xl:text-[20px] ">
+  <head>
+    <CommonMeta />
+    <Favicons />
+    <CustomStyles />
+    <ApplyColorMode />
+    <Metadata {...metadata} />
+    <SiteVerification />
+    <Analytics />
+
+    <!-- Comment the line below to disable View Transitions -->
+    <!--ViewTransitions fallback="swap" />
+    <script src="//unpkg.com/alpinejs" defer></script-->
+  </head>
+
+  <body class="antialiased text-default tracking-tight bg-[var(--aw-color-bg-page)] dark:bg-[var(--aw-color-bg-page)]">
+    <style>
+      /* Estilo para el contenedor del video */
+    .video-fondo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1; /* Coloca el video detrás de otros elementos */
+    }
+
+    /* Estilo para el video */
+    .video-fondo video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Asegura que el video cubra todo el fondo sin deformarse */
+      transform: translate(-50%, -50%);
+    }
+    </style>
+     <!-- Video de fondo -->
+    <!--div class="video-fondo">
+      <video autoplay muted loop playsinline>
+        <source src="/videos/space.mp4" type="video/mp4">
+        Tu navegador no soporta el elemento de video.
+      </video>
+    </div-->
+
+    <slot />
+    <ContactUs
+        inputs={[
+          {
+            type: 'text',
+            name: 'name',
+            label: 'Nombre',
+            placeholder: 'Tu Nombre',
+          },
+          {
+            type: 'text',
+            name: 'phone',
+            label: 'Teléfono',
+            placeholder: '9 1234 5678',
+          },
+          {
+            type: 'email',
+            name: 'mail',
+            label: 'Correo',
+            placeholder: 'Tu Email',
+          },
+        ]}
+        textarea={{
+          label: 'Mensaje',
+          placeholder: 'Tu Mensaje'
+        }}
+        description="Nuestro equipo te responderá en menos de 24hrs."
+      />
+
+    <BasicScripts />
+
+    <style is:global>
+      img {
+        content-visibility: auto;
+      }
+    </style>
+  </body>
+</html>
+
+<script >  
+  import "../assets/scripts/lenisSmoothScroll.js";
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger) 
+
+  // ------------------------- Slider -------------------------
+// Animación para que el elemento entre desde abajo lentamente
+gsap.fromTo('.entry-effect-1',
+  {
+    opacity: 0,      // Comienza invisible
+    y: 200,          // Desplazado hacia abajo fuera de la vista
+  },
+  {
+    opacity: 1,      // Se vuelve visible
+    y: 0,            // Se desliza hasta su posición original
+    duration: 2,     // Duración lenta para un efecto más suave
+    ease: 'power3.out', // Efecto suave con un ligero rebote al final
+    delay: 0.3       // Un ligero retraso antes de comenzar
+  }
+);
+
+
+
+// Animación para la entrada de la segunda parte
+gsap.fromTo('.entry-effect-2',
+  {
+    opacity: 0,
+    x: -50,        // Comienza desplazado hacia la izquierda
+    scale: 0.9,    // Comienza un poco más pequeño
+    rotate: -10,   // Comienza con una ligera rotación
+    transformOrigin: 'center center', // Escala y rota desde el centro
+  },
+  {
+    opacity: 1,
+    x: 0,          // Se mueve a la posición original
+    scale: 1,      // Vuelve a su tamaño normal
+    rotate: 0,     // Termina sin rotación
+    duration: 1.5, // Duración un poco más larga para más dramatismo
+    ease: 'power3.out', // Efecto suave y progresivo
+    delay: 1.2,    // Retraso para que entre después del primero
+    stagger: 0.2   // Un pequeño retraso entre elementos
+  }
+);
+
+
+// Animación para ambos botones al mismo tiempo
+gsap.fromTo('.btn-slider-1',
+  {
+    opacity: 0,  // Comienzan invisibles
+    scale: 0.5,  // Comienzan más pequeños
+  },
+  {
+    opacity: 1,  // Se hacen visibles
+    scale: 1,    // Vuelven a su tamaño normal
+    duration: 0.8, // Duración rápida
+    ease: 'power2.out',  // Animación suave
+    delay: 0  // Sin retraso
+  }
+);
+  // ------------------------- Slider -------------------------
+
+
+  // ------------------------- Features  -------------------------
+  function animarElemento(selector, animation) {
+  gsap.utils.toArray(selector).forEach((element) => {
+    gsap.fromTo(element, 
+      { opacity: 0, y: -50 },  // Estado inicial: Invisible y desplazado hacia arriba
+      { 
+        opacity: 1, 
+        y: 0, 
+        duration: 1, 
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: element, 
+          start: "top 80%",  // Se activa cuando el top del elemento entra al 80% del viewport
+          end: "top 60%",  
+          toggleActions: "play none none reverse",
+          scrub: false
+        }
+      }
+    );
+  });
+}
+
+// 🔹 Aplicamos animaciones a cada tipo de elemento
+document.addEventListener("DOMContentLoaded", () => {
+  animarElemento(".tag");       // Anima cada .tag
+  animarElemento(".title");     // Anima cada .title
+  animarElemento(".subtitle");  // Anima cada .subtitle
+  animarElemento(".fondo-oscuro"); // Anima cada .fondo-oscuro
+});
+
+  // ------------------------- Features -------------------------
+  
+  // ------------------------- Features2 -------------------------
+  const f2tl = gsap.timeline({
+  scrollTrigger: {
+    trigger: '.f2-tag',
+    start: 'top 80%',
+    end: 'top 60%',
+    scrub: 2, // Suaviza un poco, pero hace la animación más rápida
+    markers: false,
+    toggleActions: 'play none none reverse'
+  }
+});
+
+// Animación del subtítulo (subtittle)
+f2tl.fromTo('.f2-tag', 
+  { opacity: 0, y: -100 },  // Inicia más arriba y con opacidad 0 (puedes reducir el desplazamiento)
+  { 
+    opacity: 1,   // Se hace visible
+    y: 0,         // Termina en su posición original
+    duration: 1   // Duración de la animación más rápida
+  }
+);
+
+// Animación del título (tittle) después del subtítulo
+f2tl.fromTo('.f2-title', 
+  { opacity: 0, y: -100 },  // Inicia más arriba y con opacidad 0
+  { 
+    opacity: 1,   // Se hace visible
+    y: 0,         // Termina en su posición original
+    duration: 1   // Duración de la animación más rápida
+  }, 
+  '+=0.2'         // Retraso pequeño para separar las animaciones
+);
+
+// Animación del tag después del título
+f2tl.fromTo('.f2-subtitle', 
+  { opacity: 0, y: -100 },  // Inicia más arriba y con opacidad 0
+  { 
+    opacity: 1,   // Se hace visible
+    y: 0,         // Termina en su posición original
+    duration: 1   // Duración de la animación más rápida
+  }, 
+  '+=0.2'         // Retraso pequeño para separar las animaciones
+);
+
+const tlF2Items = gsap.timeline({
+  scrollTrigger: {
+    trigger: '.f2-items',
+    start: 'top 70%',
+    end: 'top 50%',
+    scrub: 2,
+    markers: false,
+    toggleActions: 'play none none reverse'
+  }
+});
+
+tlF2Items.fromTo('.f2-items', 
+  { opacity: 0, y: -50 },
+  { 
+    opacity: 1,
+    y: 0,
+    duration: 1,
+    ease: 'power3.out'
+  }
+);
+
+// ------------------------- Features2 -------------------------
+
+// ------------------------- Stats -------------------------
+// Animación para .stat
+// Creamos la timeline para asegurar la secuencia
+gsap.utils.toArray<HTMLElement>(".container").forEach((container) => {
+  const stat = container.querySelector(".stat"); // Seleccionamos el elemento hijo .stat dentro de cada .container
+
+  if (container instanceof HTMLElement && stat instanceof HTMLElement) {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: container, // Se anima cada instancia de .container
+        start: "top 70%",  
+        end: "top 50%",
+        scrub: 2,
+        markers: false,
+        toggleActions: "play none none reverse"
+      }
+    });
+
+    // Animación del contenedor
+    tl.from(container, {
+      scale: 0.3,
+      opacity: 0,
+      duration: 2,
+      ease: "power2.out"
+    });
+
+    // Animación del elemento hijo .stat
+    tl.from(stat, {
+      y: -200,
+      opacity: 0,
+      duration: 2,
+      ease: "power2.out"
+    });
+  }
+});
+
+// ------------------------- Stats -------------------------
+
+// ------------------------- Brands -------------------------
+// Animación para el título (.brand-title)
+// Animación para el título (.brand-title)
+gsap.from(".brand-title", {
+  scrollTrigger: {
+    trigger: '.brand-title', // Se dispara con el título
+    start: 'top 50%',        // Inicia cuando el título entra al viewport
+    end: 'top 40%',          // Termina más rápido para una animación suave
+    scrub: 2,                // Suaviza el desplazamiento
+    toggleActions: 'play none none reverse'
+  },
+  y: -100,        // Desplazamiento inicial desde arriba
+  opacity: 0,     // Comienza invisible
+  duration: 2,    // Duración del efecto
+  ease: "power3.out" // Suavizado suave
+});
+
+// Animación para el subtítulo (.brand-subtitle)
+gsap.from(".brand-subtitle", {
+  scrollTrigger: {
+    trigger: '.brand-subtitle', // Se dispara con el subtítulo
+    start: 'top 50%',  
+    end: 'top 40%',    
+    scrub: 2,
+    toggleActions: 'play none none reverse'
+  },
+  y: -100,        // Desplazamiento similar desde arriba
+  opacity: 0,     // Comienza invisible
+  duration: 2,    // Duración del efecto
+  ease: "power3.out", 
+  delay: 0.5      // Retraso para que aparezca después del título
+});
+
+// Animación para la imagen (.brand-img)
+gsap.from(".brand-img", {
+  scrollTrigger: {
+    trigger: '.brand-img', // Se dispara con la imagen
+    start: 'top 80%',  
+    end: 'top 60%',    
+    scrub: 2,
+    toggleActions: 'play none none reverse',
+    markers: false
+  },
+  y: 100,         // Desplazamiento desde abajo
+  opacity: 0,     // Comienza invisible
+  duration: 2.5,  // Un poco más lenta para crear un efecto fluido
+  ease: "power3.out", 
+  delay: 1        // Retraso para que aparezca después del subtítulo
+});
+
+// Nueva animación para el contenedor (.brand-container)
+gsap.from(".brand-container", {
+  scrollTrigger: {
+    trigger: '.brand-container', // Se dispara con el contenedor
+    start: 'top 70%',  
+    end: 'top 50%',    
+    scrub: 2,
+    toggleActions: 'play none none reverse',
+    markers: false
+  },
+  scale: 0.8,      // Comienza más pequeño
+  opacity: 0,      // Comienza invisible
+  duration: 2,     // Duración de la animación
+  ease: "power3.out" 
+});
+
+
+// ------------------------- Brands -------------------------
+
+
+// ------------------------- CallToAction -------------------------
+const hlTimeline = gsap.timeline({
+  scrollTrigger: {
+    trigger: '.hl-subtitle', // Se dispara con el subtítulo
+    start: 'top 60%',        // Inicia cuando el subtítulo apenas entra en el viewport
+    end: 'top 30%',          // Termina más rápido para que no haya tanto scroll
+    scrub: 2,                // Suaviza un poco, pero hace la animación más rápida
+    markers: false,          // Para visualizar (puedes quitarlo)
+    toggleActions: 'play none none reverse'
+  }
+});
+
+// Animación del subtítulo (hl-tag)
+hlTimeline.fromTo('.hl-tag', 
+  { opacity: 0, y: -100 },  // Inicia más arriba y con opacidad 0 (puedes reducir el desplazamiento)
+  { 
+    opacity: 1,   // Se hace visible
+    y: 0,         // Termina en su posición original
+    duration: 2   // Duración de la animación más rápida
+  }
+);
+
+// Animación del título (hl-title) después del subtítulo
+hlTimeline.fromTo('.hl-title', 
+  { opacity: 0, y: -100 },  // Inicia más arriba y con opacidad 0
+  { 
+    opacity: 1,   // Se hace visible
+    y: 0,         // Termina en su posición original
+    duration: 2   // Duración de la animación más rápida
+  }, 
+  '+=0.2'         // Retraso pequeño para separar las animaciones
+);
+
+// Animación del subtítulo (hl-subtitle) después del título
+hlTimeline.fromTo('.hl-subtitle', 
+  { opacity: 0, y: -100 },  // Inicia más arriba y con opacidad 0
+  { 
+    opacity: 1,   // Se hace visible
+    y: 0,         // Termina en su posición original
+    duration: 2   // Duración de la animación más rápida
+  }, 
+  '+=0.2'         // Retraso pequeño para separar las animaciones
+);
+
+hlTimeline.fromTo('.hl-btn', 
+  { opacity: 0, y: -100 },  // Inicia más arriba y con opacidad 0
+  { 
+    opacity: 1,   // Se hace visible
+    y: 0,         // Termina en su posición original
+    duration: 2   // Duración de la animación
+  }, 
+  '+=0.2'         // Retraso pequeño para que entre al final de todo
+);
+
+// ------------------------- CallToAction -------------------------
+
+
+// ------------------------- About -------------------------
+// Definir la animación GSAP sin Timeline para un efecto más simple y elegante
+gsap.from(".h-tagline", {
+  opacity: 0, // Comienza invisible
+  y: 30, // Desplazado 30px hacia abajo
+  duration: 1.5, // Duración de la animación
+  ease: "power2.out", // Efecto de suavizado elegante
+  delay: 0.3, // Ligero retraso para hacer que el efecto sea más gradual
+});
+
+gsap.from(".h-title", {
+  opacity: 0, 
+  y: 30, 
+  duration: 1.5, 
+  ease: "power2.out",
+  delay: 0.6, // Empieza un poco después que la tagline
+});
+
+gsap.from(".h-subtitle", {
+  opacity: 0, 
+  y: 30, 
+  duration: 1.5, 
+  ease: "power2.out",
+  delay: 0.9, // Empieza después de h-title para un efecto gradual
+});
+
+// Crear la animación para la imagen .h-img
+gsap.from(".h-img", {
+  opacity: 0, // Comienza invisible
+  y: 50, // Inicia 50px hacia abajo
+  duration: 1.5, // Duración de la animación
+  ease: "power2.out", // Efecto suave
+  scrollTrigger: {
+    trigger: ".h-img", // El punto donde empieza la animación (cuando .h-img entra en el viewport)
+    start: "top 50%", // Empieza cuando el top de .h-img está al 80% del viewport
+    end: "bottom 30%", // La animación termina cuando el bottom de .h-img sale al 20% del viewport
+    scrub: false, // La animación no se vincula con el scroll, simplemente se ejecuta
+    toggleActions: "play none none reverse", // Juega una vez y no se repite
+    markers: false, // Cambia a true si quieres visualizar los puntos de inicio y fin
+  },
+});
+
+// ------------------------- Steps2 -------------------------
+// Definir la constante s2Timeline para la animación con ScrollTrigger
+const s2Timeline = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".s2-container",
+    start: "top 70%",
+    end: "top 60%",
+    scrub: false,
+    toggleActions: "play none none reverse",
+    markers: false,
+  },
+});
+
+// Animaciones de s2-container
+s2Timeline.from(".s2-container", {
+  opacity: 0, 
+  scale: 0.95, 
+  duration: 0.5, 
+  ease: "power2.out",
+})
+.from(".s2-title", {
+  opacity: 0,
+  y: 20,
+  duration: 0.4,
+  ease: "power2.out",
+}, "+=0.1")
+.from(".s2-des", {
+  opacity: 0,
+  y: 20,
+  duration: 0.4,
+  ease: "power2.out",
+}, "+=0.1");
+
+// Nueva timeline para s2-icon-container y sus elementos
+const s2IconTimeline = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".s2-icon-container",
+    start: "top 70%",
+    end: "top 60%",
+    scrub: false,
+    toggleActions: "play none none reverse",
+    markers: false,
+  },
+});
+
+// Animaciones de s2-icon-container
+s2IconTimeline.from(".s2-icon-container", {
+  opacity: 0, 
+  scale: 0.95, 
+  duration: 0.5, 
+  ease: "power2.out",
+})
+.from(".s2-icon-title", {
+  opacity: 0,
+  y: 20,
+  duration: 0.4,
+  ease: "power2.out",
+}, "+=0.1")
+.from(".s2-icon-des", {
+  opacity: 0,
+  y: 20,
+  duration: 0.4,
+  ease: "power2.out",
+}, "+=0.1")
+.from(".s2-icon", { // Ahora forma parte de s2IconTimeline
+  opacity: 0,
+  y: 20,
+  duration: 0.4,
+  ease: "power2.out",
+}, "+=0.1");
+// ------------------------- Steps2 -------------------------
+// ------------------------- About -------------------------
+
+
+gsap.from(".he2", {
+  opacity: 0, // Empieza invisible
+  y: 50,      // Desplazado 50px hacia abajo
+  duration: 1.5, // Duración de la animación
+  ease: "power2.out", // Suavizado
+});
+
+
+</script>

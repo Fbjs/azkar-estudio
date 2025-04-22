@@ -1,0 +1,129 @@
+---
+import Layout from '~/layouts/LandingLayoutServices.astro';
+
+import Hero2 from '~/components/widgets/Hero2.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+//import Stats from '~/components/widgets/Stats.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Button from '~/components/ui/Button.astro';
+
+import HeroImage from '~/assets/images/maquinaria-pesada.jpg';
+
+
+const metadata = {
+  title: 'Automatización de Equipos - PPM Servicios',
+  ignoreTitleTemplate: true,
+};
+---
+<Layout metadata={metadata}>
+  <!-- Hero Section -->
+  <Hero2
+    tagline="Automatización de Equipos"
+    title="Lleva tu Maquinaria al Siguiente Nivel"
+    subtitle="Implementamos soluciones de automatización para equipos de minería y maquinaria pesada, mejorando su eficiencia y seguridad."
+    image={{
+      src: HeroImage,
+      alt: 'Automatización de equipos de maquinaria pesada',
+    }}
+  >
+    <Fragment slot="boton">
+      <Button variant="formulario">
+        Solicita una Cotización
+      </Button>
+      <Button
+        variant="whatsapp"
+        text="Más información"
+        phone="56963238857"
+      />
+    </Fragment>
+  </Hero2>
+
+  <!-- Features Section -->
+  <Features2
+    classes={{ container: ' my-10' }}
+    title="Beneficios de la Automatización de Equipos"
+    subtitle="Nuestras soluciones están diseñadas para optimizar el rendimiento y la seguridad de tus equipos."
+    items={[
+      {
+        title: 'Mayor Eficiencia',
+        description: 'Optimiza los procesos operativos y reduce los tiempos de inactividad.',
+        icon: 'tabler:chart-line',
+      },
+      {
+        title: 'Seguridad Mejorada',
+        description: 'Implementamos sistemas de control remoto y automatización para reducir riesgos operativos.',
+        icon: 'tabler:shield-check',
+      },
+      {
+        title: 'Adaptación Tecnológica',
+        description: 'Moderniza tus equipos con tecnología de última generación.',
+        icon: 'tabler:device-desktop',
+      },
+    ]}
+  />
+
+  <!-- Stats Section 
+  <Stats
+    classes={{
+      container: 'fondo-oscuro bg-dark bg-opacity-70 my-10',
+    }}
+    title="Resultados de Nuestras Soluciones"
+    stats={[
+      { title: 'Equipos Automatizados', amount: '150', symbol: '+' },
+      { title: 'Clientes Satisfechos', amount: '200', symbol: '+' },
+      { title: 'Años de Experiencia', amount: '15', symbol: '+' },
+      { title: 'Proyectos Completados', amount: '300', symbol: '+' },
+    ]}
+  />-->
+
+  <!-- Call to Action Section -->
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        target: '_blank',
+        text: 'Contáctanos hoy',
+        href: '/contact',
+        icon: 'tabler:message-circle',
+      },
+    ]}
+  >
+    <Fragment slot="title">Confía en PPM Servicios</Fragment>
+    <Fragment slot="subtitle">
+      Nuestras soluciones de automatización están diseñadas para mejorar la productividad y seguridad de tus operaciones.
+    </Fragment>
+    <Fragment slot="boton">
+      <Button variant="primary" class="open-modal-btn">
+        Cotiza tu Proyecto
+      </Button>
+    </Fragment>
+  </CallToAction>
+
+  <!-- FAQs Section -->
+  <FAQs
+    title="Preguntas Frecuentes"
+    items={[
+      {
+        title: '¿Qué incluye el servicio de automatización?',
+        description:
+          'Incluye la implementación de sistemas de control remoto, sensores avanzados y modernización de equipos.',
+      },
+      {
+        title: '¿Qué tipos de equipos pueden automatizar?',
+        description:
+          'Automatizamos maquinaria pesada, equipos de minería y otros equipos industriales.',
+      },
+      {
+        title: '¿Cuánto tiempo toma un proyecto de automatización?',
+        description:
+          'El tiempo depende del alcance del proyecto, pero trabajamos para garantizar una implementación eficiente.',
+      },
+      {
+        title: '¿Cómo puedo solicitar este servicio?',
+        description:
+          'Puedes contactarnos a través de nuestro formulario en línea o por WhatsApp para recibir más información y una cotización personalizada.',
+      },
+    ]}
+  />
+</Layout>

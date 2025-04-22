@@ -1,0 +1,128 @@
+---
+import Layout from '~/layouts/LandingLayoutServices.astro';
+
+import Hero2 from '~/components/widgets/Hero2.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+//import Stats from '~/components/widgets/Stats.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Button from '~/components/ui/Button.astro';
+
+import HeroImage from '~/assets/images/maquinaria-pesada.jpg';
+
+const metadata = {
+  title: 'Calibración de Blowers - PPM Servicios',
+  ignoreTitleTemplate: true,
+};
+---
+<Layout metadata={metadata}>
+  <!-- Hero Section -->
+  <Hero2
+    tagline="Calibración de Blowers"
+    title="Optimiza el Rendimiento de tus Equipos de Alto Vacío"
+    subtitle="Ofrecemos servicios especializados en calibración de blowers para garantizar su eficiencia y prolongar su vida útil."
+    image={{
+      src: HeroImage,
+      alt: 'Calibración de blowers de alto vacío',
+    }}
+  >
+    <Fragment slot="boton">
+      <Button variant="formulario">
+        Solicita una Cotización
+      </Button>
+      <Button
+        variant="whatsapp"
+        text="Más información"
+        phone="56963238857"
+      />
+    </Fragment>
+  </Hero2>
+
+  <!-- Features Section -->
+  <Features2
+    classes={{ container: 'my-10' }}
+    title="Beneficios de la Calibración de Blowers"
+    subtitle="Nuestros servicios están diseñados para garantizar el óptimo rendimiento y la durabilidad de tus equipos."
+    items={[
+      {
+        title: 'Eficiencia Mejorada',
+        description: 'Aseguramos que tus blowers operen al máximo de su capacidad.',
+        icon: 'tabler:wind',
+      },
+      {
+        title: 'Reducción de Fallas',
+        description: 'Minimizamos el riesgo de fallas inesperadas mediante calibraciones precisas.',
+        icon: 'tabler:alert-circle',
+      },
+      {
+        title: 'Prolongación de la Vida Útil',
+        description: 'Extendemos la vida útil de tus equipos con mantenimiento especializado.',
+        icon: 'tabler:clock',
+      },
+    ]}
+  />
+
+  <!-- Stats Section 
+  <Stats
+    classes={{
+      container: 'fondo-oscuro bg-dark bg-opacity-70 my-10',
+    }}
+    title="Resultados de Nuestros Servicios"
+    stats={[
+      { title: 'Blowers Calibrados', amount: '300', symbol: '+' },
+      { title: 'Clientes Satisfechos', amount: '200', symbol: '+' },
+      { title: 'Años de Experiencia', amount: '15', symbol: '+' },
+      { title: 'Proyectos Completados', amount: '500', symbol: '+' },
+    ]}
+  />-->
+
+  <!-- Call to Action Section -->
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        target: '_blank',
+        text: 'Contáctanos hoy',
+        href: '/contact',
+        icon: 'tabler:message-circle',
+      },
+    ]}
+  >
+    <Fragment slot="title">Confía en PPM Servicios</Fragment>
+    <Fragment slot="subtitle">
+      Nuestro servicio de calibración de blowers garantiza el rendimiento óptimo y la durabilidad de tus equipos.
+    </Fragment>
+    <Fragment slot="boton">
+      <Button variant="primary" class="open-modal-btn">
+        Cotiza tu Proyecto
+      </Button>
+    </Fragment>
+  </CallToAction>
+
+  <!-- FAQs Section -->
+  <FAQs
+    title="Preguntas Frecuentes"
+    items={[
+      {
+        title: '¿Qué incluye el servicio de calibración de blowers?',
+        description:
+          'Incluye inspección, ajuste y calibración precisa para garantizar el rendimiento óptimo de tus equipos.',
+      },
+      {
+        title: '¿Qué tipos de blowers pueden ser calibrados?',
+        description:
+          'Trabajamos con blowers de alto vacío utilizados en maquinaria pesada y equipos especializados.',
+      },
+      {
+        title: '¿Cuánto tiempo toma la calibración?',
+        description:
+          'El tiempo depende del estado del equipo, pero garantizamos un servicio eficiente y de calidad.',
+      },
+      {
+        title: '¿Cómo puedo solicitar este servicio?',
+        description:
+          'Puedes contactarnos a través de nuestro formulario en línea o por WhatsApp para recibir más información y una cotización personalizada.',
+      },
+    ]}
+  />
+</Layout>

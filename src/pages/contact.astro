@@ -1,0 +1,86 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import ContactUs from '~/components/widgets/Contact.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import FondoVideo from '~/layouts/FondoVideo.astro';
+
+const metadata = {
+  title: 'Contacto - PPM Servicios',
+  ignoreTitleTemplate: true
+};
+---
+
+<Layout metadata={metadata}>
+  <FondoVideo src="/videos/Hero_inpection.mp4" />
+
+  <div class="relative bg-mapa">
+    <!-- Contenido del div -->
+    <div class="relative z-10">
+      <ContactUs
+        id="form"
+        title="¡Envíanos un mensaje hoy mismo!"
+        subtitle="Nuestro equipo está listo para ayudarte con cualquier consulta o solicitud. Completa el formulario y nos pondremos en contacto contigo lo antes posible."
+        inputs={[
+          {
+            type: 'text',
+            name: 'name',
+            label: 'Nombre',
+          },
+          {
+            type: 'phone',
+            name: 'phone',
+            label: 'Teléfono',
+          },
+          {
+            type: 'email',
+            name: 'email',
+            label: 'Correo Electrónico',
+          },
+        ]}
+        textarea={{
+          label: 'Mensaje',
+        }}
+        disclaimer={{
+          label:
+            'Al enviar este formulario de contacto, reconoces y aceptas la recopilación de tu información personal.',
+        }}
+        description="Nuestro equipo de soporte suele responder dentro de las 24 horas hábiles."
+      />
+  
+      <Features2
+        title="¡Estamos aquí para ayudarte!"
+        items={[
+          {
+            title: 'Soporte general',
+            description: `Contáctanos para consultas relacionadas con la gestión de cuentas, navegación en el sitio web, problemas de pago o preguntas generales sobre nuestros servicios.`,
+          },
+          {
+            title: 'Contacto ventas',
+            description:
+              'Contáctanos para preguntas sobre repuestos, opciones de personalización, licencias para uso comercial o consultas sobre productos específicos.',
+          },
+          {
+            title: 'Soporte técnico',
+            description:
+              'Contáctanos si tienes problemas con la instalación, mantenimiento de equipos, dificultades técnicas o cualquier desafío relacionado con nuestros servicios.',
+          },
+          {
+            title: 'Teléfono',
+            description: '+56 9 6323 8857',
+            icon: 'tabler:headset',
+          },
+          {
+            title: 'Correo electrónico',
+            description: 'ppacheco@ppmchile.com',
+            icon: 'tabler:mail',
+          },
+          {
+            title: 'Ubicación',
+            description: 'Camino Santa Rosa de Santiago 3040, Parcela 204, Lampa – Santiago, Chile',
+            icon: 'tabler:map-pin',
+          },
+        ]}
+      />
+    </div>
+  </div>
+</Layout>

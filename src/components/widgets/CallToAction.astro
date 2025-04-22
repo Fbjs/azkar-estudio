@@ -1,0 +1,73 @@
+---
+import WidgetWrapper from '../ui/WidgetWrapper.astro';
+import type { CallToAction, Widget } from '~/types';
+import Headline from '~/components/ui/Headline.astro';
+import Button from '~/components/ui/Button.astro';
+
+interface Props extends Widget {
+  title?: string;
+  subtitle?: string;
+  tagline?: string;
+  callToAction?: CallToAction;
+  actions?: string | CallToAction[];
+}
+
+const {
+  title = await Astro.slots.render('title'),
+  subtitle = await Astro.slots.render('subtitle'),
+  tagline = await Astro.slots.render('tagline'),
+  actions = await Astro.slots.render('actions'),
+
+  id,
+  isDark = false,
+  classes = {},
+  bg = await Astro.slots.render('bg'),
+} = Astro.props;
+---
+
+<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-6xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
+  <div
+    class="max-w-3xl mx-auto text-center p-6 rounded-md shadow-xl dark:shadow-none dark:border dark:border-[var(--aw-color-text-muted)] bg-[var(--aw-color-bg-page)] dark:bg-[var(--aw-color-bg-page-dark)]"
+  >
+    <Headline
+      tagline={tagline}
+      classes={{
+        container: 'mb-0 md:mb-0',
+        tagline: 'text-[var(--aw-color-secondary)] dark:text-[var(--aw-color-accent)]',
+      }}
+    />
+
+    <Headline
+      title={title}
+      classes={{
+        title: 'text-4xl md:text-4xl font-bold tracking-tighter mb-4 font-heading text-[var(--aw-color-text-heading)] dark:text-[var(--aw-color-text-default)]',
+      }}
+    />
+
+    <Headline
+      subtitle={subtitle}
+      classes={{
+        subtitle: 'text-xl text-[var(--aw-color-text-muted)] dark:text-[var(--aw-color-text-muted)]',
+      }}
+    />
+
+    {
+      actions && (
+        <div class="max-w-lg sm:max-w-2xl m-auto flex flex-col sm:flex-row sm:justify-center gap-4 mt-6">
+          {Array.isArray(actions) ? (
+            actions.map((action) => (
+              <div class="w-full sm:w-auto">
+                <Button
+                  {...(action || {})}
+                  class="w-full sm:mb-0 text-[var(--aw-color-text-button)] bg-[var(--aw-color-accent)] dark:text-[var(--aw-color-text-button)] dark:bg-[var(--aw-color-accent)]"
+                />
+              </div>
+            ))
+          ) : (
+            <Fragment set:html={actions} />
+          )}
+        </div>
+      )
+    }
+  </div>
+</WidgetWrapper>
