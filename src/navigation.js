@@ -7,79 +7,25 @@ export const headerData = {
       href: '/',
     },
     {
-      text: 'Empresa',
-      links: [
-        {
-          text: '¿Quiénes somos?',
-          href: getPermalink('/about#quienes-somos'),
-        },
-        {
-          text: 'Visión y Misión',
-          href: getPermalink('/about#vision-mision'),
-        },
-        {
-          text: '¿Dónde trabajamos?',
-          href: getPermalink('/about#ubicacion'),
-        },
-      ],
+      text: 'Nosotros',
+      href: '/about',
     },
     {
-      text: 'Servicios',
-      links: [
-        {
-          text: 'Mantención preventiva',
-          href: getPermalink('/services/mantencion-preventiva'),
-        },
-        {
-          text: 'Servicio spot en terreno',
-          href: getPermalink('/services/servicio-spot'),
-        },
-        {
-          text: 'Automatización de equipos',
-          href: getPermalink('/services/automatizacion'),
-        },
-        {
-          text: 'Scanner y programación de motores',
-          href: getPermalink('/services/scanner-programacion'),
-        },
-        {
-          text: 'Frenos y revisión técnica',
-          href: getPermalink('/services/frenos-revision'),
-        },
-        {
-          text: 'Calibración de blowers',
-          href: getPermalink('/services/calibracion-blowers'),
-        },
-        {
-          text: 'Ajuste hidráulico y eléctrico',
-          href: getPermalink('/services/ajuste-hidraulico-electrico'),
-        },
-        {
-          text: 'Remontaje de equipos',
-          href: getPermalink('/services/remontaje'),
-        },
-      ],
+      text: 'Testimonios',
+      href: '/about',
     },
     {
-      text: 'Especialidades',
-      links: [
-        {
-          text: 'Equipos',
-          href: getPermalink('/specialties/equipos'),
-        },
-        {
-          text: 'Técnicas',
-          href: getPermalink('/specialties/tecnicas'),
-        },
-      ],
+      text: 'Cursos',
+      href: '/about',
     },
     {
-      text: 'Repuestos',
-      href: getPermalink('/repuestos'),
+      text: 'Productos',
+      href: '/about',
     },
+   
     {
       text: 'Contacto',
-      href: getPermalink('/contact'),
+      href: getPermalink('/about'),
     },
   ],
 };

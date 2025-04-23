@@ -1,13 +1,13 @@
 site:
-  name: PPM Servicios
-  leyend: Mantenimiento y Reparación
+  name: Azkar Estudio #This is the site title.
+  leyend: Estética orgánica y academia  #This is the site subtitle.
   site: 'https://ppmservicios.cl'
   base: '/'
   trailingSlash: false
   googleSiteVerificationId: 'nAV4Y6iBI_zv2OgyOJ6x_60rfZ_165YNpE1EfwEQS2E'
 
 # Default SEO metadata
-metadata:
+metadata: #This is the metadata for the site.
   title:
     default: PPM Servicios
     template: '%s — Mantenimiento y Reparación'

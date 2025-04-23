@@ -1,0 +1,95 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Form from '~/components/ui/Form.astro';
+import Button from '~/components/ui/Button.astro';
+
+const metadata = {
+  title: 'Cursos en Línea - Azkar Estudio',
+  ignoreTitleTemplate: true,
+};
+---
+
+<Layout metadata={metadata}>
+  <div class="container my-12 mx-auto px-4 md:px-12">
+    <h1 class="text-4xl font-bold text-center mb-8">Cursos en Línea</h1>
+    <p class="text-center mb-8">
+      Este curso en línea se impartirá en vivo, estructurado en bloques que
+      combinan teoría y práctica. Está diseñado especialmente para quienes no
+      pueden asistir a nuestro masterclass, ofreciendo una formación completa y
+      dinámica.
+    </p>
+    <Form>
+      <div class="mb-4">
+        <label for="nombre" class="block text-gray-700 text-sm font-bold mb-2">
+          Nombre y Apellido
+        </label>
+        <input
+          type="text"
+          id="nombre"
+          name="nombre"
+          placeholder="Tu nombre completo"
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+      </div>
+      <div class="mb-4">
+        <label for="region" class="block text-gray-700 text-sm font-bold mb-2">
+          Región
+        </label>
+        <input
+          type="text"
+          id="region"
+          name="region"
+          placeholder="Tu región"
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+      </div>
+      <div class="mb-4">
+        <label for="ciudad" class="block text-gray-700 text-sm font-bold mb-2">
+          Ciudad
+        </label>
+        <input
+          type="text"
+          id="ciudad"
+          name="ciudad"
+          placeholder="Tu ciudad"
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+      </div>
+      <div class="mb-4">
+        <label for="correo" class="block text-gray-700 text-sm font-bold mb-2">
+          Correo Electrónico
+        </label>
+        <input
+          type="email"
+          id="correo"
+          name="correo"
+          placeholder="Tu correo electrónico"
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+      </div>
+      <div class="mb-6">
+        <label for="contacto" class="block text-gray-700 text-sm font-bold mb-2">
+          N° de Contacto
+        </label>
+        <input
+          type="tel"
+          id="contacto"
+          name="contacto"
+          placeholder="Tu número de contacto"
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+      </div>
+      <div class="flex items-center justify-center">
+        <Button
+          type="submit"
+          variant="primary"
+          classes={{
+            container: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline',
+          }}
+        >
+          Pago por TEF Electrónica
+        </Button>
+      </div>
+    </Form>
+  </div>
+</Layout>
