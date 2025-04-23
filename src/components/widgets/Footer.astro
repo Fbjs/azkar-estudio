@@ -1,7 +1,8 @@
 ---
 import { Icon } from 'astro-icon/components';
 import { getHomePermalink } from '~/utils/permalinks';
-import Logo from '~/components/Logo.astro';
+
+
 
 interface Link {
   text?: string;
@@ -35,27 +36,7 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
       class="grid grid-cols-1 md:grid-cols-5 gap-8 py-8 md:py-12 items-start"
     >
       <!-- Logo and Secondary Links -->
-      <div class="flex flex-col items-start gap-4">
-        <a class="flex items-center" href={getHomePermalink()}>
-          <Logo />
-        </a>
-        <div class="text-sm flex gap-1">
-          {
-            secondaryLinks.map(({ text, href }, index) => (
-              <>
-                {index !== 0 ? ' · ' : ''}
-                <a
-                  class="hover:text-[var(--aw-color-secondary)] dark:hover:text-[var(--aw-color-accent)] hover:underline transition duration-150 ease-in-out"
-                  href={href}
-                  set:html={text}
-                />
-              </>
-            ))
-          }
-        </div>
-      </div>
-
-      <!-- Contact Information -->
+      <div class="flex flex-col gap-4"></div>
       <div class="flex flex-col gap-4">
         <div class="flex items-center gap-2">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="fill-current text-[var(--aw-color-text-heading)] dark:text-[var(--aw-color-text-default)] h-5 w-5">
@@ -64,12 +45,15 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
           </svg>
           <div>
             <p class="font-bold text-sm uppercase">Escríbenos a</p>
-            <a href="mailto:ppacheco@ppmchile.com" class="text-sm hover:text-[var(--aw-color-secondary)] dark:hover:text-[var(--aw-color-accent)] hover:underline transition duration-150 ease-in-out">
-              ppacheco@ppmchile.com
+            <a href="mailto:contacto@azkar-estudio.cl" class="text-sm hover:text-[var(--aw-color-secondary)] dark:hover:text-[var(--aw-color-accent)] hover:underline transition duration-150 ease-in-out">
+              contacto@azkar-estudio.cl
             </a>
           </div>
         </div>
-
+      </div>
+      
+      <!-- Contact Information -->
+      <div class="flex flex-col gap-4">
         <div class="flex items-center gap-2">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[var(--aw-color-text-heading)] dark:text-[var(--aw-color-text-default)] h-5 w-5">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -77,26 +61,51 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
             <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
           </svg>
           <div>
-            <p class="font-bold text-sm uppercase">Contacta un Asesor</p>
-            <a href="https://wa.me/56963238857?text=Hola,%20me%20gustaría%20recibir%20más%20información" target="_blank" class="text-sm hover:text-[var(--aw-color-secondary)] dark:hover:text-[var(--aw-color-accent)]">
-              +56 9 6323 8857
-            </a>
-            <a href="https://wa.me/56992525316?text=Hola,%20me%20gustaría%20recibir%20más%20información" target="_blank" class="text-sm hover:text-[var(--aw-color-secondary)] dark:hover:text-[var(--aw-color-accent)]">
-              +56 9 9252 5316
+            <p class="font-bold text-sm uppercase">Escribenos tus consultas:</p>
+            <a href="https://wa.me/56950117062?text=Hola,%20me%20gustaría%20recibir%20más%20información" target="_blank" class="text-sm hover:text-[var(--aw-color-secondary)] dark:hover:text-[var(--aw-color-accent)]">
+              +56 9 5011 7062
             </a>
           </div>
         </div>
+      </div>
 
+      <div class="flex flex-col gap-4">
         <div class="flex items-center gap-2">
           <svg class="fill-current text-[var(--aw-color-text-heading)] dark:text-[var(--aw-color-text-default)] h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"></path>
           </svg>
           <div>
             <p class="font-bold text-md uppercase">Dirección</p>
-            <p class="text-sm text-[var(--aw-color-text-muted)]">Av. Eduardo Frei Montalva 815, Independencia, Santiago</p>
+            <p class="text-sm text-[var(--aw-color-text-muted)]">Manquehue Norte 71, Las Condes, Región Metropolitana</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="fill-current text-[var(--aw-color-text-heading)] dark:text-[var(--aw-color-text-default)] h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"></path>
+          </svg>
+          <div>
+            <p class="text-sm text-[var(--aw-color-text-muted)]">Morande 801, Santiago Centro, Región Metropolitana</p>
           </div>
         </div>
       </div>
+
+      <div class="flex flex-col gap-4"></div>
+
+      <div class="text-sm text-muted flex gap-1">
+        {
+          secondaryLinks.map(({ text, href }, index) => (
+            <>
+              {index !== 0 ? ' · ' : ''}
+              <a
+                class="text-muted hover:text-gray-700 dark:text-gray-400 hover:underline transition duration-150 ease-in-out"
+                href={href}
+                set:html={text}
+              />
+            </>
+          ))
+        }
+      </div>
+
 
       <!-- Links -->
       {
@@ -122,7 +131,7 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
         ))
       }
     </div>
-    <div class="flex items-center justify-between py-6 md:py-8">
+    <div class="flex items-center justify-start py-6 md:py-8">
       {
         socialLinks?.length ? (
           <ul class="flex gap-4">
@@ -144,8 +153,10 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
         )
       }
 
-      <div class="text-sm text-[var(--aw-color-text-muted)]">
-        <Fragment set:html={footNote} />
+      <div class="w-full text-sm text-[var(--aw-color-text-muted)] flex justify-center items-center">
+        <div class="w-full flex justify-center items-center">
+          <Fragment set:html={footNote} />
+        </div>
       </div>
     </div>
   </div>

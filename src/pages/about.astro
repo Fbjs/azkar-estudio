@@ -1,13 +1,8 @@
 ---
 import Hero from '~/components/widgets/Hero.astro';
-//import Stats from '~/components/widgets/Stats.astro';
-import Steps2 from '~/components/widgets/Steps2.astro';
-import Steps3 from '~/components/widgets/Steps3.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import Layout from '~/layouts/PageLayout.astro';
-import Team from '~/assets/images/team.jpg';
-import Location from '~/assets/images/taller.jpg';
-import visionmision from '~/assets/images/vision-mision.jpg';
+import Team from '~/assets/images/nosotros.jpg';
 
 
 const metadata = {
@@ -19,51 +14,39 @@ const metadata = {
   <!-- Hero Section -->
   <Hero
     id="quienes-somos"
-    tagline="Nuestra Empresa"
+    tagline="Azkar Estudio"
     image={{
       src: Team,
-      alt: 'Taller de PPM Servicios',
+      alt: 'Equipo de Azkar Estudio',
     }}
   >
-    <Fragment slot="title">
-      <span class="text-[var(--aw-color-text-default)] dark:text-[var(--aw-color-text-default)]">¡Especialistas en maquinaria pesada!</span>
-      <span class="text-[var(--aw-color-accent)]">Mantenimiento y Reparación Integral</span>
-    </Fragment>
+    <!--<Fragment slot="title">
+      <span class="text-[var(--aw-color-text-default)] dark:text-[var(--aw-color-text-default)]">¡Cuidado capilar con excelencia!</span>
+      <span class="text-[var(--aw-color-accent)]">Transforma tu cabello con nosotros</span>
+    </Fragment>--->
 
-    <Fragment slot="subtitle">
+    <!-- <Fragment slot="subtitle">
       <span class="text-[var(--aw-color-text-default)] dark:text-[var(--aw-color-text-default)]">
-        En PPM Servicios, somos una empresa fundada por un especialista en maquinaria con experiencia en empresas líderes del rubro. Ofrecemos servicios mecánicos para equipos especiales de minería, maquinaria pesada, flota liviana, buses y camiones. Nuestro enfoque es entregar un servicio integral con estándares de fabricante, cumpliendo con las exigencias de nuestros clientes.
+        Somos un equipo apasionado por el cuidado capilar, comprometidos en ofrecer productos y servicios que respeten la salud de tu cabello y potencien su belleza. Creemos en la importancia de utilizar fórmulas innovadoras que brinden resultados efectivos sin comprometer el bienestar.
       </span>
-    </Fragment>
+
+      <span class="text-[var(--aw-color-text-default)] dark:text-[var(--aw-color-text-default)]">
+        En nuestro estudio de alisados orgánicos, libres de formol y parabenos, ofrecemos tratamientos diseñados para lograr un cabello más manejable, sedoso y radiante. Priorizamos el uso de soluciones seguras, garantizando una experiencia que une estética y salud capilar, sin recurrir a químicos agresivos.
+      </span>
+    </Fragment>---->
   </Hero>
 
   <!-- ¿Quiénes Somos? Section -->
   <Features2
     title="¿Quiénes Somos?"
-    subtitle="Somos una empresa comprometida con la excelencia, fundada por un especialista en maquinaria pesada con amplia experiencia en empresas líderes del rubro. Nuestro objetivo es ofrecer soluciones integrales para el mantenimiento y reparación de equipos de minería, maquinaria pesada, flota liviana, buses y camiones."
+    subtitle="Somos un equipo apasionado por el cuidado capilar, comprometidos en ofrecer productos y servicios que respeten la salud de tu cabello y potencien su belleza. Creemos en la importancia de utilizar fórmulas innovadoras que brinden resultados efectivos sin comprometer el bienestar. En nuestro estudio de alisados orgánicos, libres de formol y parabenos, ofrecemos tratamientos diseñados para lograr un cabello más manejable, sedoso y radiante. Priorizamos el uso de soluciones seguras, garantizando una experiencia que une estética y salud capilar, sin recurrir a químicos agresivos."
   >
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-[var(--aw-color-bg-page)] dark:bg-[var(--aw-color-bg-page-dark)]"></div>
     </Fragment>
   </Features2>
 
-  <!-- Stats Section 
-  <Stats
-    classes={{
-      container: 'bg-[var(--aw-color-bg-page-dark)] text-[var(--aw-color-text-default)] my-10',
-      title: 'text-[var(--aw-color-accent)]',
-      amount: 'text-[var(--aw-color-secondary)] dark:text-[var(--aw-color-accent)]',
-    }}
-    title="Nuestras Estadísticas"
-    stats={[
-      { title: 'Clientes Satisfechos', amount: '200', symbol: '+' },
-      { title: 'Proyectos Completados', amount: '500', symbol: '+' },
-      { title: 'Años de Experiencia', amount: '15', symbol: '+' },
-      { title: 'Expertos en el Equipo', amount: '30', symbol: '+' },
-    ]}
-  />-->
-
-  <!-- Visión y Misión Section -->
+  <!-- Visión y Misión Section 
   <section id="vision-mision" class="my-10">
     <h2 class="text-2xl font-bold text-center text-[var(--aw-color-accent)]">Visión y Misión</h2>
     <div class="mt-6">
@@ -73,45 +56,37 @@ const metadata = {
           {
             title: 'Visión',
             description:
-              'Convertirnos en líderes en ventas de repuestos, asesorías y mantenimiento de equipos de izaje, electricidad y minería en la Región Metropolitana.',
+              'Ser referentes en el cuidado capilar orgánico, ofreciendo formación y tratamientos innovadores que respeten la salud del cabello.',
           },
           {
             title: 'Misión',
             description:
-              'Entregar un servicio integral con estándares de fabricante, cumpliendo con las exigencias de nuestros clientes y garantizando calidad en cada trabajo.',
+              'Brindar educación y tratamientos capilares especializados, asegurando resultados efectivos sin comprometer la salud capilar.',
           },
         ]}
-        classes={{
-          title: 'text-[var(--aw-color-text-heading)] dark:text-[var(--aw-color-text-default)]',
-          description: 'text-[var(--aw-color-text-muted)] dark:text-[var(--aw-color-text-muted)]',
-        }}
       />
     </div>
-  </section>
+  </section>-->
 
-  <!-- ¿Dónde Trabajamos? Section -->
+  <!-- Ubicación Section 
   <section id="ubicacion" class="my-10">
-    <h2 class="text-2xl font-bold text-center text-[var(--aw-color-accent)]">¿Dónde trabajamos?</h2>
+    <h2 class="text-2xl font-bold text-center text-[var(--aw-color-accent)]">¿Dónde estamos?</h2>
     <div class="mt-6">
       <Steps3
         image={Location}
         items={[
           {
-            title: 'Taller Principal',
+            title: 'Estudio Principal',
             description:
-              '📍 Camino Santa Rosa de Santiago 3040, Parcela 204, Lampa – Santiago. Taller de 4500 m² equipado para atender tus necesidades.',
+              '📍 Ubicado en un espacio exclusivo donde ofrecemos nuestros tratamientos y capacitaciones.',
           },
           {
-            title: 'Atención en Terreno',
+            title: 'Cursos Online',
             description:
-              '🚐 Ofrecemos atención en terreno dentro y fuera de Santiago, adaptándonos a tus requerimientos.',
+              '💻 Accede a nuestra formación desde cualquier lugar con nuestros cursos en línea.',
           },
         ]}
-        classes={{
-          title: 'text-[var(--aw-color-text-heading)] dark:text-[var(--aw-color-text-default)]',
-          description: 'text-[var(--aw-color-text-muted)] dark:text-[var(--aw-color-text-muted)]',
-        }}
       />
     </div>
-  </section>
+  </section>-->
 </Layout>
